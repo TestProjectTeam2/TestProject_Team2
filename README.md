@@ -20,20 +20,20 @@ Examples:
 After you pushed new branch to repository, you need to create pull request. 
 To do it, you need to click on 'Pull requests' -> 'New pull request'.
 
-![img](README_images/new_pull_request.PNG)
+![img](README_images/new_pull_request.png)
 
 You can review the changes made in the 'Files changed' tab to ensure everything looks good. 
 After that you need to click on "Create pull request" as highlighted by the arrow. 
 'Compare' should be your newly-created branch and 'base' should be 'dev'. 
 The only branch from which we will be creating pull requests to 'main' will be the 'dev' branch.
 
-![img](README_images/create_pull_request.PNG)
+![img](README_images/create_pull_request.png)
 
 Once you have reviewed and filled in the necessary information such as the name of pull request and description,
 click on the 'Create pull request' button again to submit your pull request.
 It will also be a good practice to assign another participant to do a code review when creating a pull request.
 
-![img](README_images/create_pull_request2.PNG)
+![img](README_images/create_pull_request2.png)
 
 
 # Getting Started with Create React App
