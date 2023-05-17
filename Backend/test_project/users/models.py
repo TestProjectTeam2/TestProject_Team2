@@ -1,15 +1,41 @@
 from django.db import models
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 from datetime import date
 
 
-class User(AbstractUser):
+class UserAccountManager(BaseUserManager):
+    def create_user(self, email, name, last_name, phone, password=None) -> 'User':
+        if not email:
+            raise ValueError('Users must have an email address')
+
+        if not phone:
+            raise ValueError('Users must have a phone number')
+
+        email = self.normalize_email(email)
+        user = self.model(email=email, name=name, last_name=last_name, phone=phone)
+
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=12, unique=True)
     address = models.CharField(max_length=256, null=True)
     date_of_birth = models.DateField(null=True, blank=True)
-    email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=12, unique=True, null=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = UserAccountManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name', 'last_name', 'phone']
 
     @property
     def age(self) -> int:
