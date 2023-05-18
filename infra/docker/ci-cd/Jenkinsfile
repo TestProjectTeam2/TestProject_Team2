@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Deploy with docker-compose') {
+            steps {
+                dir('infra/docker') {
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+    }
+}
