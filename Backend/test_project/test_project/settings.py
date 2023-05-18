@@ -32,10 +32,13 @@ INSTALLED_APPS = [
 
     # test_project apps
     'users',
+    'order.apps.OrderConfig',
 
     # third-party apps
     'rest_framework',
     'djoser',
+
+
 ]
 
 MIDDLEWARE = [
