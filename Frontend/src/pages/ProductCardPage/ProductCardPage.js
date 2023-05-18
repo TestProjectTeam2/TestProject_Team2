@@ -1,4 +1,5 @@
 import { ProductCardDetails } from '../../components/ProductCardDetails/ProductCardDetails';
+import { ProductCardTabs } from '../../components/ProductCardTabs/ProductCardTabs';
 import './ProductCardPage.scss';
 
 export const ProductCardPage = () => (
@@ -44,5 +45,10 @@ export const ProductCardPage = () => (
 			<div>30 відгуків</div>
 		</div>
 		<ProductCardDetails/>
+		<ProductCardTabs/>
+		<div className='buy-with'>
+		<div className='buy-with__title'>З цим товаром купують</div>
+		<div className='buy-with__card-container'></div>
+		</div>
 	</div>
 )
