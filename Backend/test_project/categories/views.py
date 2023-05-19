@@ -11,11 +11,18 @@ class CategoriesAPIViewSet(viewsets.ModelViewSet):
 
     """ Standard ModelViewSet which implements CRUD with minor changes. """
 
-    # Method .viewable() defined in category manager (models.py) to prevent duplication of parent when listing children
-    queryset = Category.objects.viewable()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    # lookup_field = 'slug'
-    # permission_classes = (IsAuthenticated,)
+    lookup_field = 'slug'
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        if self.action == 'list':
+            # Method .viewable() defined in category manager (models.py)
+            # to prevent duplication of parent when listing children
+            return Category.objects.viewable()
+        else:
+            return super().get_queryset()
 
     @action(methods=["get"], detail=False, url_path=r"(?P<slug>[-\w]+)/children")
     def children(self, request, slug=None):
