@@ -31,14 +31,7 @@
 	}
 }
 
-.content-main {
 
-	&__container {
-	}
-
-	&__body {
-	}
-}
 .content-inside {
 	margin-bottom: 4rem;
 	&__title {
@@ -50,4 +43,47 @@
 	&__description {
 		line-height: 1.5rem;
 	}
+}
+
+.description {
+	margin-bottom: 2.25rem;
+	&__subtitle {
+		font-size: 1.25rem;
+		margin-bottom: 1.5rem;
+		font-weight: 700;
+	}
+
+}
+
+.report {
+	&__underline{
+		flex-grow: 1;
+		color: $bg;
+		border-bottom: 1px dotted #000;
+		margin-top: -.75rem;
+	}
+}
+
+.revies {
+	margin-bottom: 2.25rem;
+
+	&__user-name {
+		font-size: 1.25rem;
+		font-weight: 700;
+	}
+
+	&__confirmation {
+		font-size: .625rem;
+		span {
+			padding: .25rem .5rem ;
+			background: url('../../../public/images/icons/verified_user.svg') left no-repeat;
+		}
+	}
+
+	&__likes {
+		font-size: .625rem;
+		text-align: right;
+		gap: .5rem;
+	}
+
 }
