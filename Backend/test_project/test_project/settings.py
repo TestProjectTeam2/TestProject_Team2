@@ -29,11 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # test_project apps
     'users',
     "categories.apps.CategoriesConfig",
-
+    'product',
     # third-party apps
     'rest_framework',
     'djoser',
