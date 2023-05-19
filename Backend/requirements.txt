@@ -7,4 +7,4 @@ tzdata==2023.3
 djoser==2.2.0
 djangorestframework-simplejwt==5.2.2
 PyJWT==2.7.0
-
+python-dotenv==1.0.0
