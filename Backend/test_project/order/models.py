@@ -17,6 +17,7 @@ class Order(models.Model):
         ('IN', 'Installments')
     ]
     order_id = models.UUIDField(primary_key = True, default=uuid.uuid4, editable=False)
+    # name = models.ManyToManyField()
     # user = models.ForeignKey(User, on_delete=models.SET('видалений користувач'), null=True ,verbose_name='Користувач')
     first_name = models.CharField(max_length=30, verbose_name="Ім'я")
     last_name = models.CharField(max_length=50, verbose_name='Прізвище')
