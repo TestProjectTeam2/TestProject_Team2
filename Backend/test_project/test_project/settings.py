@@ -37,6 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third party apps:
+    'rest_framework',
+    "mptt",
+    'django_mptt_admin',
+
+    # Project custom apps:
+    "categories.apps.CategoriesConfig",
 ]
 
 MIDDLEWARE = [
