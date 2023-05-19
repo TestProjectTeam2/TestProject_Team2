@@ -1,0 +1,125 @@
+@import '../../styles/variables.scss';
+
+.similar-products {
+	width: 52rem;
+	margin-bottom: 4rem;
+	&__title {
+		font-size: 1.5rem;
+		margin-bottom: 2.25rem;
+		font-weight: 700;
+	}
+
+	&__card-container {
+		display: flex;
+		gap: 1.25rem;
+	}
+}
+
+
+.product {
+	width: 100%;
+	border: 1px solid $stroke;
+	border-radius: 1rem;
+	transition: transform .3s, box-shadow .3s ease-in-out;
+		&:hover {
+		transform: translateY(-.5rem);
+		box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.06);
+		z-index: 1;
+	}
+		&__image-wrapper {
+			img {
+				max-width: 80%;
+				max-height: 10rem;
+			}
+		}
+
+		&__heart {
+			cursor: pointer;
+		}
+
+		&__availability {
+			color: $correct;
+			span {
+				padding-right: 1rem;
+				margin-right: .5rem;
+				background: url('../../../public/images/icons/check.svg') left no-repeat;
+			}
+		}
+
+		&__title-wrapper{
+			margin-bottom: 2rem;
+		}
+
+		&__title {
+			font-size: 1rem;
+			overflow: hidden;
+			height: 3rem;
+		}
+
+		&__comment{
+			gap: .5rem;
+			.review div{
+				cursor: pointer;
+			}
+		}
+
+		&__old-price {
+			gap: .75rem;
+			margin-bottom: .5rem;
+			div {
+				font-size: .875rem;
+				text-decoration: line-through;
+				color: $light_text;
+			}
+			button {
+				font-size: .625rem;
+				padding: .125rem .625rem;
+				color: $bg;
+				background: $sale;
+				border-radius: .5rem;
+				border: none;
+			}
+		}
+
+		&__button{
+			padding: .25rem 1rem;
+			background: $accent;
+			border-radius: .25rem;
+			border: none;
+			cursor: pointer;
+			line-height: 1.5rem;
+			span {
+				padding: 0 .75rem;
+				margin-left: .25rem;
+				background: url('../../../public/images/icons/shopping_cart.svg') left no-repeat;
+			}
+			&:hover{
+				box-shadow: 0px 2px 4px rgba(37, 33, 33, 0.2);
+			}
+	
+			&:active{
+				background: #2A75AA;
+			}
+	
+			&:disabled {
+				background: $stroke;
+			}
+		}
+
+		&__buy{
+			margin-bottom: 1rem;
+		}
+
+		&__new-price {
+			font-size: 1.5rem;
+		}
+
+		&__delivery {
+			font-size: .625rem;
+			span {
+				padding-right: 1rem;
+				margin-right: .5rem;
+				background: url('../../../public/images/icons/local_shipping_mini.svg') left no-repeat;
+			}
+		}
+}

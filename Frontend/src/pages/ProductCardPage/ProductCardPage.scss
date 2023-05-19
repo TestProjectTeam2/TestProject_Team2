@@ -4,7 +4,6 @@
 	margin: 0 auto;
 	max-width: 87.5rem;
 	font-family: "Lato", sans-serif;
-	background: $bg;
 }
 
 .breadcrumbs {
@@ -87,7 +86,7 @@
 
 	&__value {
 		font-size: .875rem;
-		line-height: 1rem;
+		padding-top: .2rem;
 		padding-left: .625rem;
 	}
 }
