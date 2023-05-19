@@ -7,11 +7,6 @@ from datetime import date
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, name, last_name, phone, password=None) -> 'User':
-        if not email:
-            raise ValueError('Users must have an email address')
-
-        if not phone:
-            raise ValueError('Users must have a phone number')
 
         email = self.normalize_email(email)
         user = self.model(email=email, name=name, last_name=last_name, phone=phone)
