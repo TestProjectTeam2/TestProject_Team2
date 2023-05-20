@@ -12,7 +12,7 @@ const REGISTER_MODE = 'register';
 const LOG_IN_FIELDS = [
 	{
 		as: Input,
-		placeholder: "example@go.com",
+		placeholder: "E-mail",
 		type: "email",
 		name: "email",
 		label: "E-mail", 
@@ -27,10 +27,10 @@ const LOG_IN_FIELDS = [
 	},
 	{
 		as: Input,
-		placeholder: "xxxxxx",
+		placeholder: "Password",
 		type: "password",
 		name: "password",
-		label: "Пароль", 
+		label: "Password", 
 		id: "password",
 		// rules: {
 		// 	required: "This is a required field"
@@ -51,10 +51,10 @@ export const AuthWindow = () => {
 	const REGISTER_FIELDS = [
 		{
 			as: Input,
-			placeholder: "Ім'я",
+			placeholder: "First name",
 			type: "text",
 			name: "firstName",
-			label: "Ім'я", 
+			label: "First name", 
 			id: "first-name",
 			// rules: {
 			// 	required: "This is a required field"
@@ -62,7 +62,7 @@ export const AuthWindow = () => {
 		},
 		{
 			as: Input,
-			placeholder: "Прізвище",
+			placeholder: "Last name",
 			type: "text",
 			name: "lastName",
 			label: "Last name", 
@@ -73,7 +73,18 @@ export const AuthWindow = () => {
 		},
 		{
 			as: Input,
-			placeholder: "example@go.com",
+			placeholder: "Age",
+			type: "number",
+			name: "age",
+			label: "Age", 
+			id: "age",
+			// rules: {
+			// 	valueAsNumber: true
+			// }
+		},
+		{
+			as: Input,
+			placeholder: "E-mail",
 			type: "email",
 			name: "email",
 			label: "E-mail", 
@@ -84,10 +95,10 @@ export const AuthWindow = () => {
 		},
 		{
 			as: Input,
-			placeholder: "xxxxxx",
+			placeholder: "Password",
 			type: "password",
 			name: "password",
-			label: "Пароль", 
+			label: "Password", 
 			id: "password",
 			// rules: {
 			// 	required: "This is a required field",
@@ -99,10 +110,10 @@ export const AuthWindow = () => {
 		},
 		{
 			as: Input,
-			placeholder: "xxxxxx",
+			placeholder: "Confirm password",
 			type: "password",
 			name: "confirmPassword",
-			label: "Підтвердіть пароль", 
+			label: "Confirm password", 
 			id: "confirm-password",
 			// rules: {
 			// 	required: "This is a required field",
