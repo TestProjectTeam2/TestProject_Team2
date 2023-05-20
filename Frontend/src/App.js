@@ -1,11 +1,13 @@
 import './App.css';
+import { AuthWindow } from './components/AuthWindow/AuthWindow';
 import { ProductCardPage } from './pages/ProductCardPage/ProductCardPage';
-import { HomePage } from './pages/HomePage/HomePage'
+
+
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+		<AuthWindow/>
     </div>
   );
 }

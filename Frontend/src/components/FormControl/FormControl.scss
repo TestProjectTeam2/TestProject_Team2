@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+
+.control-form {
+	display: flex;
+	flex-direction: column;
+	// border: none;
+	// padding: 0;
+	&__label{
+		display: inline-block;
+		font-size: 1rem;
+		font-weight: bold;
+		margin-bottom: .25rem;
+	}
+
+	&__field{
+		display: flex;
+		flex-direction: column;
+	}
+
+	// &__error {
+	// 	display: block;
+	// 	margin-top: .3rem;
+	// 	color: red;
+	// }
+}
