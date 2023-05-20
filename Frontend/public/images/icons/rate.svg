@@ -1,0 +1,32 @@
+<svg width="92" height="16" viewBox="0 0 92 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_246_2400" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_246_2400)">
+<path d="M3.88325 14.6667L4.96659 9.98333L1.33325 6.83333L6.13325 6.41667L7.99992 2L9.86659 6.41667L14.6666 6.83333L11.0333 9.98333L12.1166 14.6667L7.99992 12.1833L3.88325 14.6667Z" fill="#EFA827"/>
+</g>
+<mask id="mask1_246_2400" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="19" y="0" width="24" height="24">
+<rect x="19" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask1_246_2400)">
+<path d="M22.8833 14.6667L23.9666 9.98333L20.3333 6.83333L25.1333 6.41667L26.9999 2L28.8666 6.41667L33.6666 6.83333L30.0333 9.98333L31.1166 14.6667L26.9999 12.1833L22.8833 14.6667Z" fill="#EFA827"/>
+</g>
+<mask id="mask2_246_2400" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="38" y="0" width="24" height="24">
+<rect x="38" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask2_246_2400)">
+<path d="M41.8833 14.6667L42.9666 9.98333L39.3333 6.83333L44.1333 6.41667L45.9999 2L47.8666 6.41667L52.6666 6.83333L49.0333 9.98333L50.1166 14.6667L45.9999 12.1833L41.8833 14.6667Z" fill="#EFA827"/>
+</g>
+<mask id="mask3_246_2400" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="57" y="0" width="24" height="24">
+<rect x="57" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask3_246_2400)">
+<path d="M60.8833 14.6667L61.9666 9.98333L58.3333 6.83333L63.1333 6.41667L64.9999 2L66.8666 6.41667L71.6666 6.83333L68.0333 9.98333L69.1166 14.6667L64.9999 12.1833L60.8833 14.6667Z" fill="#EFA827"/>
+</g>
+<mask id="mask4_246_2400" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="76" y="0" width="24" height="24">
+<rect x="76" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask4_246_2400)">
+<path d="M83.9999 10.6167L86.0999 11.9L85.5499 9.5L87.3999 7.9L84.9666 7.68333L83.9999 5.41667V10.6167ZM79.8833 14.6667L80.9666 9.98333L77.3333 6.83333L82.1333 6.41667L83.9999 2L85.8666 6.41667L90.6666 6.83333L87.0333 9.98333L88.1166 14.6667L83.9999 12.1833L79.8833 14.6667Z" fill="#EFA827"/>
+</g>
+</svg>
