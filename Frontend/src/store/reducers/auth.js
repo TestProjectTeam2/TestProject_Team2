@@ -1,8 +1,8 @@
 import * as types from '../actionTypes';
 
 const INITIAL_STATE = {
-	idToken: null,
-	localId: null
+	token: null,
+	uid: null
 };
 
 export const authReducer = (state = INITIAL_STATE, {type, payload}) => {
