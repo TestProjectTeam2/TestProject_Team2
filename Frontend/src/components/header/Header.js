@@ -79,7 +79,9 @@ export default function Header() {
                             <img src="/images/icons/favorite_light.svg"/>
                         </Nav.Link>
                         <Nav.Link>
-                            <img src="/images/icons/shopping_cart.svg"/>
+                            <NavLink to="/cart">
+                                <img src="/images/icons/shopping_cart.svg"/>
+                            </NavLink>
                         </Nav.Link>
                         <Nav.Link>
                             <NavLink to='/login'>
