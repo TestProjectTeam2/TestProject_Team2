@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+footer {
+    background-color: $footer;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 5px;
+    margin: 0;
+    color: $bg;
+    h5 {
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+    }
+    p {
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .contact {
+        display: flex;
+        font-size: 20px;
+        a {
+            text-decoration: none;
+            color: $bg;
+            padding: 10px 15px;
+        }
+    }
+    .bottom {
+        margin-top: 35px;
+        img {
+            margin-left: 60%;
+        }
+    }
+}

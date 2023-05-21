@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card} from 'react-bootstrap';
 import './ProductCard.scss';
+import { NavLink } from 'react-router-dom';
 
 export default function ProductCard() {
     return(
@@ -16,7 +17,9 @@ export default function ProductCard() {
 				</div>
 				<div className="product__info">
 					<div className="product__title-wrapper">
-						<div className="product__title">Ноутбук Lenovo IdeaPad Gaming 3 15IHU6 (82K101FJRA) Shadow Black</div>
+						<NavLink to='/product'>
+							<div className="product__title">Ноутбук Lenovo IdeaPad Gaming 3 15IHU6 (82K101FJRA) Shadow Black</div>
+						</NavLink>
 						<div class="product__comment d-flex align-items-center">
 							<form action='#' className="rate">
 								<div className="rate__body">
