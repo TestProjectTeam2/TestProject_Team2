@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Button } from 'react-bootstrap';
 
+import { authenticateUser } from '../../store/actions/auth';
+import { useMutation } from '../../hooks/useMutation';
 import { FormControl } from '../FormControl/FormControl';
 import { Input } from '../Input/Input';
 
@@ -11,6 +13,8 @@ import './AuthWindow.scss';
 const LOG_IN_MODE = 'log-in';
 const REGISTER_MODE = 'register';
 const EMAIL_PATTERN = /^[a-zA-Z-._0-9]+@[a-z]+\.[a-z]{2,3}$/
+
+const authUrl = 'http://127.0.0.1:8000/auth/users/';
 
 const LOG_IN_FIELDS = [
 	{
@@ -44,7 +48,7 @@ const LOG_IN_FIELDS = [
 		}
 	}
 ]
-const selectIdToken = state => !!state.auth.idToken;
+const selectIdToken = state => !!state.auth.token;
 
 export const AuthWindow = () => {
 
@@ -62,16 +66,27 @@ export const AuthWindow = () => {
 	const isAuthenticated = useSelector(selectIdToken);
 	const dispatch = useDispatch();
 
+	const {mutate} = useMutation({
+		url: authUrl,
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		onSuccess: response => {
+			const { token, uid } = response;
+			// Handle errors
+			if (!token && !uid) return;
+			dispatch(authenticateUser(token, uid))
+			// console.log(token, uid);
+		}
+});
+
 	useEffect(() => {
 		reset();
 		clearErrors();
 	}, [mode, reset, clearErrors]);
 
 	const onSubmit = values => {
-		// mutate(JSON.stringify({...values, returnSecureToken: true}))
-		console.log(values);
-		
-		// dispatch(isLogInMode ? logInUser(values) : registerUser(values));
+		mutate(JSON.stringify(values));
 	}
 	const onError = errors => console.log(errors);
 
