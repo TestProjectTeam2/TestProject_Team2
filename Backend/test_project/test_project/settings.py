@@ -32,10 +32,13 @@ INSTALLED_APPS = [
 
     # test_project apps
     'users',
+    "categories.apps.CategoriesConfig",
 
     # third-party apps
     'rest_framework',
     'djoser',
+    "mptt",
+    'django_mptt_admin',
 ]
 
 MIDDLEWARE = [
