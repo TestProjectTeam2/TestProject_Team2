@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # test_project apps
     'users',
+    'order.apps.OrderConfig',
     "categories.apps.CategoriesConfig",
     'product',
     # third-party apps
