@@ -7,3 +7,8 @@ from .models import *
 class OrderCreateAPi(generics.CreateAPIView):
     serializer_class = OrderSerializer
     queryset = Order.objects.all()
+
+
+class OrderGetAPi(generics.ListAPIView):
+    serializer_class = OrderSerializer
+    queryset = Order.objects.all()
