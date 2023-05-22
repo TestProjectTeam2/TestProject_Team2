@@ -1,0 +1,68 @@
+@import '../../styles/variables.scss';
+
+header {
+    .banner {
+        width:100%;
+        height: 100px;
+        background-image: url("../../../public/images/icons/bg.svg");
+        p {
+            font-size: 36px;
+            color: $bg;
+            text-align: center;
+            padding: 15px;
+        }
+    }
+    .container {
+        margin: 0 auto;
+        padding: 15px;
+        width: 95%;
+        color: $text;
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        .me-auto {
+           margin-left: 15%;
+           
+        }
+    }
+    .menu {
+        background-color: $dark_blue;
+        height: 70px;
+        button {
+            display: flex;
+            padding: 10px 35px;
+            background: rgba(22, 22, 22, 0.4);
+            width: 264px;
+            height: 52px;
+            border: none;
+            backdrop-filter: blur(19.5px);
+            border-radius: 8px;
+            p {
+                font-size: 20px;
+                color:$bg;
+                padding: 3px;
+            }          
+        }
+        form {
+            display: flex;
+            margin-left: -10%;
+            background-color: $bg;
+            border-radius: 8px;
+            width: 643px;
+            input {
+                border:none;
+                border-radius: 8px;
+                width: 600px;
+                padding-left: 15px;
+            }
+            button {
+                background-color: $bg;
+                width: 50px;
+
+            }
+        }     
+
+    }
+}

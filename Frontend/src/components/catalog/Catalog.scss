@@ -1,0 +1,65 @@
+@import '../../styles/variables.scss';
+
+.catalog {
+    display: flex;
+    flex-direction: column;
+    background-color: $bg;
+    position: absolute;
+    z-index: 9999;
+    margin-top: 20px;
+    padding: 35px;
+    height: 50%;
+}
+
+.categories {
+    background-color: $bg;
+    color: $text;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px; 
+    a {
+        flex: 1;
+        text-align: left;
+        padding-right: 15px;
+    }
+    img {
+        margin-left: auto;
+    }
+} 
+.sub-categories {
+    background-color: $bg;
+    color: $text;
+    border: none;  
+    display: flex;
+    flex-wrap: wrap;
+    width: 1050px;
+    margin-top: 207.5px;
+    margin-left: 35px;
+    padding: 25px;
+
+}
+.sub-category {
+    width: 300px;
+    h4 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 14px;
+        padding: 5px;
+        margin: 0;
+    }
+}
+  
+.sub-categories {
+    position: absolute;
+    top: 50%; /* Задайте желаемые координаты вертикального положения */
+    left: 150%; /* Задайте желаемые координаты горизонтального положения */
+    transform: translate(-50%, -50%); /* Центрирует оверлей по центру экрана */
+    /* Дополнительные стили для оверлея */
+  }
+  
+  
+  
+  
