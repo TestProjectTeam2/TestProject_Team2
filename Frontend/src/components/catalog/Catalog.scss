@@ -9,24 +9,31 @@
     margin-top: 20px;
     padding: 35px;
     height: 50%;
+    width: 95%;
 }
 
 .categories {
     background-color: $bg;
     color: $text;
-    border: none;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px; 
-    a {
+    margin-left: 5%;
+    .category {
+        display: flex;
+        height: 50px;
         flex: 1;
         text-align: left;
-        padding-right: 15px;
+        padding: 0 10px;
+        width: 250px;
+        p {
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        img {
+            margin-left: auto;
+            width: 10px;
+        }  
     }
-    img {
-        margin-left: auto;
-    }
+
 } 
 .sub-categories {
     background-color: $bg;
@@ -34,31 +41,18 @@
     border: none;  
     display: flex;
     flex-wrap: wrap;
-    width: 1050px;
-    margin-top: 207.5px;
-    margin-left: 35px;
-    padding: 25px;
-
-}
-.sub-category {
-    width: 300px;
-    h4 {
-        font-size: 20px;
-    }
-    p {
-        font-size: 14px;
-        padding: 5px;
-        margin: 0;
+    .sub-category {
+        width: 300px;
+        h4 {
+            font-size: 20px;
+        }
+        p {
+            font-size: 14px;
+            padding: 5px;
+            margin: 0;
+        }
     }
 }
-  
-.sub-categories {
-    position: absolute;
-    top: 50%; /* Задайте желаемые координаты вертикального положения */
-    left: 150%; /* Задайте желаемые координаты горизонтального положения */
-    transform: translate(-50%, -50%); /* Центрирует оверлей по центру экрана */
-    /* Дополнительные стили для оверлея */
-  }
   
   
   
