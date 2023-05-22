@@ -75,7 +75,7 @@ export const AuthWindow = () => {
 			
 			const { token, uid } = response;
 			// Handle errors
-			if (!token && !uid) return alert('error!!!!!!!!!!');
+			if (!token && !uid) return alert('Запит був здійснений');
 			dispatch(authenticateUser(token, uid))
 			// console.log(token, uid);
 		}
