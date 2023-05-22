@@ -72,9 +72,10 @@ export const AuthWindow = () => {
 			'Content-Type': 'application/json'
 		},
 		onSuccess: response => {
+			
 			const { token, uid } = response;
 			// Handle errors
-			if (!token && !uid) return;
+			if (!token && !uid) return alert('error!!!!!!!!!!');
 			dispatch(authenticateUser(token, uid))
 			// console.log(token, uid);
 		}
@@ -95,9 +96,9 @@ export const AuthWindow = () => {
 			as: Input,
 			placeholder: "Ім'я",
 			type: "text",
-			name: "firstName",
+			name: "name",
 			label: "Ім'я", 
-			id: "first-name",
+			id: "name",
 			rules: {
 				required: "This is a required field"
 			}
@@ -106,9 +107,9 @@ export const AuthWindow = () => {
 			as: Input,
 			placeholder: "Прізвище",
 			type: "text",
-			name: "lastName",
+			name: "last_name",
 			label: "Прізвище", 
-			id: "last-name",
+			id: "last_name",
 			rules: {
 				required: "This is a required field"
 			}
@@ -158,9 +159,9 @@ export const AuthWindow = () => {
 			as: Input,
 			placeholder: "xxxxxxxx",
 			type: "password",
-			name: "confirmPassword",
+			name: "re_password",
 			label: "Підтвердіть пароль", 
-			id: "confirm-password",
+			id: "re_password",
 			rules: {
 				required: "This is a required field",
 				validate: confirmPasswordValue => {
