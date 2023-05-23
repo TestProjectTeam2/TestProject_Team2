@@ -6,10 +6,13 @@ import ProductCard from '../../components/productCard/ProductCard';
 import YouTube from 'react-youtube';
 
 export default function HomePage() {
+    
     const opts = {
         width: '320',
         height: '200'
     }
+
+    
     return(
         <>
             <Carousel>
