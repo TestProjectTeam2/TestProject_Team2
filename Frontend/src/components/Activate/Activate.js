@@ -30,10 +30,10 @@ export const Activate = (match) => {
 		onError: () => alert('Запит не був відправлений')
 	});
 
+	const { uid } = useParams();
+	const { token } = useParams();
 
 	const verifyAccount = e => {
-		const uid = match.params.uid;
-      const token = match.params.token;
 
 		mutate(JSON.stringify({ uid, token }));
       setVerified(true);
