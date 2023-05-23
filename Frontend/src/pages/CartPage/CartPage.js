@@ -16,7 +16,7 @@ export default function CartPage() {
                 <hr />
                 <div className="general">
                     <button onClick={() => navigate(-1)} id="back">
-                        <img src="/images/icons/arrow_forward_ios.svg"/>
+                        <img src="/images/icons/arrow_forward_ios.svg" alt="back icon"/>
                         Продовжити вибір товарів
                     </button>
                     <h2>Разом: 35999 ₴</h2>

@@ -20,7 +20,7 @@ export default function ProductCard() {
 						<NavLink to='/product'>
 							<div className="product__title">Ноутбук Lenovo IdeaPad Gaming 3 15IHU6 (82K101FJRA) Shadow Black</div>
 						</NavLink>
-						<div class="product__comment d-flex align-items-center">
+						<div className="product__comment d-flex align-items-center">
 							<form action='#' className="rate">
 								<div className="rate__body">
 									<div className="rate__active"></div>
@@ -38,11 +38,11 @@ export default function ProductCard() {
 							</div>
 						</div>
 					</div>
-					<div class="product__old-price d-flex">
+					<div className="product__old-price d-flex">
 						<div>47999 &#8372;</div>
 						<button>- 25 %</button>
 					</div>
-					<div class="product__buy d-flex justify-content-between align-items-center w-100">
+					<div className="product__buy d-flex justify-content-between align-items-center w-100">
 						<div className="product__new-price">35 999 &#8372;</div>
 						<NavLink to="/cart">
 							<button variant="primary" className="product__button"><span></span></button>

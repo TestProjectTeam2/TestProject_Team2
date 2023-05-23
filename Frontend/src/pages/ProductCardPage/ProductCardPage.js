@@ -1,4 +1,4 @@
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 import { ProductCardDetails } from '../../components/ProductCardDetails/ProductCardDetails';
 import { ProductCardTabs } from '../../components/ProductCardTabs/ProductCardTabs';

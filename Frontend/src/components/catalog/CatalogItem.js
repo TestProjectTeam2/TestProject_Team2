@@ -4,18 +4,13 @@ export default function CatalogItem({ subcategories }) {
   return (
     <>
       <div className='sub-categories'>
-          {subcategories.map((subcategoryObj) => {
-          const subcategoryName = Object.keys(subcategoryObj)[0];
-          const subcategoryValues = subcategoryObj[subcategoryName];
-          return (
-            <div key={subcategoryName} className='sub-category'>
-              <h4>{subcategoryName}</h4>
-              {subcategoryValues.map((value) => (
-                <p key={value}>{value}</p>
-              ))}
-            </div>
-          );
-        })}
+        {subcategories.map((subcategory) => (
+          <div className='sub-category' key={subcategory.id}>
+            <h4>{subcategory.name}</h4>
+            <p>{subcategory.child[0].name}</p>
+            <p>{subcategory.child[1].name}</p>
+          </div>
+        ))}
       </div>
     </>
   );
