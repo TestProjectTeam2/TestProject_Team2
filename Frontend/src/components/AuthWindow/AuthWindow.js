@@ -67,7 +67,7 @@ export const AuthWindow = () => {
 	const isAuthenticated = useSelector(selectIdToken);
 	const dispatch = useDispatch();
 
-	const {mutate, error} = useMutation({
+	const {mutate} = useMutation({
 		url: authUrl,
 		headers: {
 			'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ export const AuthWindow = () => {
 			alert(`Вітаю ${name}. Перейдіть на пошту, щоб підтвердити обліковий запит`);
 			// dispatch(authenticateUser(token, uid))
 		},
-		onError: () => alert(`Запит не був відправлений. ${error}`)
+		onError: () => alert(`Запит не був відправлений.`)
 });
 
 	useEffect(() => {

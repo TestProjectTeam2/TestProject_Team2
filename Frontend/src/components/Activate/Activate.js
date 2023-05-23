@@ -19,15 +19,12 @@ export const Activate = () => {
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		onSuccess: response => {
-			
-			const { uid, token } = response;
+		onSuccess: () => {
 			// Handle errors
-			if (!uid && !token) return alert('Запит пройшов, але токенів нема');
-			dispatch(authenticateUser(uid, token))
+			alert('Запит пройшов успішно');
 			// console.log(token, uid);
 		},
-		onError: () => alert('Запит не був відправлений')
+		// onError: () => alert('Запит не був відправлений')
 	});
 
 	const { uid } = useParams();
@@ -44,7 +41,7 @@ export const Activate = () => {
 
 	return (
 	<div className="activate d-flex justify-content-center align-items-center my-5">
-		<Button type="submit" onClick={verifyAccount}>Activate your account</Button>
+		<Button type="button" onClick={verifyAccount}>Activate your account</Button>
 	</div>
 	)
 }
