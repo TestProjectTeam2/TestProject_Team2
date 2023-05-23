@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { useMutation } from "../../hooks/useMutation";
 import { authenticateUser } from '../../store/actions/auth';
 
-export const Activate = (match) => {
+export const Activate = () => {
 
 	const [verified, setVerified] = useState(false);
 
