@@ -76,10 +76,10 @@ export const AuthWindow = () => {
 			
 			const { name } = response;
 			// Handle errors
-			alert(`Вітаю ${name}. Перейдіть на пошту, щоб підтвердити обліковий запит`);
-			// dispatch(authenticateUser(token, uid))
+			if (!name) return alert('Помилка. Можливо користувач вже існує');
+			alert(`Вітаю ${name}Перейдіть на пошту, щоб підтвердити обліковий запит`)
 		},
-		onError: () => alert(`Запит не був відправлений.`)
+		onError: () => alert('Запит не був відправлений')
 });
 
 	useEffect(() => {

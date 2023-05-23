@@ -22,7 +22,6 @@ export const Activate = () => {
 		onSuccess: () => {
 			// Handle errors
 			alert('Запит пройшов успішно');
-			// console.log(token, uid);
 		},
 		// onError: () => alert('Запит не був відправлений')
 	});
