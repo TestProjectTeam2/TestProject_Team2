@@ -18,8 +18,8 @@ class Order(models.Model):
         ('NC', 'Non-cash'),
         ('IN', 'Installments')
     ]
-    order_id = models.UUIDField(primary_key= True, default=uuid.uuid4, editable=False)
-    name = models.ManyToManyField(Product, verbose_name='Назва товару', related_name='product')
+    id = models.UUIDField(primary_key= True, default=uuid.uuid4, editable=False)
+    products = models.ManyToManyField(Product, verbose_name='Назва товару', related_name='order')
     quantity = models.IntegerField(default=1, verbose_name='Кількість')
     user = models.ForeignKey(User, on_delete=models.SET('видалений користувач'), null=True ,verbose_name='Користувач')
     first_name = models.CharField(max_length=30, verbose_name="Ім'я")

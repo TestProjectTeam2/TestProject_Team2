@@ -1,14 +1,9 @@
-from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import viewsets
 from .serializers import OrderSerializer
 from .models import *
+from rest_framework.permissions import IsAuthenticated
 
-
-class OrderCreateAPi(generics.CreateAPIView):
-    serializer_class = OrderSerializer
+class OrderAPIViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
-
-
-class OrderGetAPi(generics.ListAPIView):
     serializer_class = OrderSerializer
-    queryset = Order.objects.all()
+    # permission_classes = [IsAuthenticated]
