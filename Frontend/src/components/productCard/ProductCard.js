@@ -44,7 +44,9 @@ export default function ProductCard() {
 					</div>
 					<div class="product__buy d-flex justify-content-between align-items-center w-100">
 						<div className="product__new-price">35 999 &#8372;</div>
-						<button variant="primary" className="product__button"><span></span></button>
+						<NavLink to="/cart">
+							<button variant="primary" className="product__button"><span></span></button>
+						</NavLink>
 					</div>
 					<div className='product__delivery'><span></span>Готовий до відправлення</div>
 				</div>
