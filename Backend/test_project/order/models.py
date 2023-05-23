@@ -19,11 +19,8 @@ class Order(models.Model):
         ('IN', 'Installments')
     ]
     order_id = models.UUIDField(primary_key= True, default=uuid.uuid4, editable=False)
-    name = models.ManyToManyField(Product, verbose_name='Назва товару', related_name='product_name')
-    id = models.ManyToManyField(Product, verbose_name='Номер товару', related_name='product_id')
-    price = models.ManyToManyField(Product, verbose_name='Ціна', related_name='product_price')
+    name = models.ManyToManyField(Product, verbose_name='Назва товару', related_name='product')
     quantity = models.IntegerField(default=1, verbose_name='Кількість')
-    discount = models.ManyToManyField(Product, verbose_name='Знижка', related_name='product_discount')
     user = models.ForeignKey(User, on_delete=models.SET('видалений користувач'), null=True ,verbose_name='Користувач')
     first_name = models.CharField(max_length=30, verbose_name="Ім'я")
     last_name = models.CharField(max_length=50, verbose_name='Прізвище')
