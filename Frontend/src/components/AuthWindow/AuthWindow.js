@@ -1,6 +1,10 @@
-import { useState } from 'react';
-import {Button } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { Button } from 'react-bootstrap';
 
+import { authenticateUser } from '../../store/actions/auth';
+import { useMutation } from '../../hooks/useMutation';
 import { FormControl } from '../FormControl/FormControl';
 import { Input } from '../Input/Input';
 
@@ -8,6 +12,9 @@ import './AuthWindow.scss';
 
 const LOG_IN_MODE = 'log-in';
 const REGISTER_MODE = 'register';
+const EMAIL_PATTERN = /^[a-zA-Z-._0-9]+@[a-z]+\.[a-z]{2,3}$/
+
+const authUrl = 'http://127.0.0.1:8000/auth/users/';
 
 const LOG_IN_FIELDS = [
 	{
@@ -17,26 +24,31 @@ const LOG_IN_FIELDS = [
 		name: "email",
 		label: "E-mail", 
 		id: "email",
-		// rules: {
-		// 	required: "This is a required field",
-		// 	pattern: {
-		// 		value: EMAIL_PATTERN,
-		// 		message: "Error!!!!!!!!!!"
-		// 	}
-		// }
+		rules: {
+			required: "This is a required field",
+			pattern: {
+				value: EMAIL_PATTERN,
+				message: "Error!"
+			}
+		}
 	},
 	{
 		as: Input,
-		placeholder: "xxxxxx",
+		placeholder: "xxxxxxxx",
 		type: "password",
 		name: "password",
 		label: "Пароль", 
 		id: "password",
-		// rules: {
-		// 	required: "This is a required field"
-		// }
+		rules: {
+			required: "This is a required field",
+			minLength: {
+				value: 8,
+				message: 'Password should have minimum length of 8'
+			}
+		}
 	}
 ]
+const selectIdToken = state => !!state.auth.token;
 
 export const AuthWindow = () => {
 
@@ -44,32 +56,63 @@ export const AuthWindow = () => {
 
 	const isLogInMode = mode === LOG_IN_MODE;
 
+
 	const handleSwitchMode = () => {
 		setMode(prevMode => (prevMode === LOG_IN_MODE ? REGISTER_MODE : LOG_IN_MODE));
 	};
+
+	const { control, handleSubmit, formState: {errors}, formState, getValues, clearErrors, reset } = useForm({});
+
+	const isAuthenticated = useSelector(selectIdToken);
+	const dispatch = useDispatch();
+
+	const {mutate} = useMutation({
+		url: authUrl,
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		onSuccess: response => {
+			
+			const { token, uid } = response;
+			// Handle errors
+			if (!token && !uid) return alert('Запит був здійснений');
+			dispatch(authenticateUser(token, uid))
+			// console.log(token, uid);
+		}
+});
+
+	useEffect(() => {
+		reset();
+		clearErrors();
+	}, [mode, reset, clearErrors]);
+
+	const onSubmit = values => {
+		mutate(JSON.stringify(values));
+	}
+	const onError = errors => console.log(errors);
 
 	const REGISTER_FIELDS = [
 		{
 			as: Input,
 			placeholder: "Ім'я",
 			type: "text",
-			name: "firstName",
+			name: "name",
 			label: "Ім'я", 
-			id: "first-name",
-			// rules: {
-			// 	required: "This is a required field"
-			// }
+			id: "name",
+			rules: {
+				required: "This is a required field"
+			}
 		},
 		{
 			as: Input,
 			placeholder: "Прізвище",
 			type: "text",
-			name: "lastName",
-			label: "Last name", 
-			id: "last-name",
-			// rules: {
-			// 	required: "This is a required field"
-			// }
+			name: "last_name",
+			label: "Прізвище", 
+			id: "last_name",
+			rules: {
+				required: "This is a required field"
+			}
 		},
 		{
 			as: Input,
@@ -78,46 +121,63 @@ export const AuthWindow = () => {
 			name: "email",
 			label: "E-mail", 
 			id: "email",
-			// rules: {
-			// 	required: "This is a required field"
-			// }
+			rules: {
+				required: "This is a required field",
+				pattern: {
+					value: EMAIL_PATTERN,
+					message: "Error!"
+				}
+			}
 		},
 		{
 			as: Input,
-			placeholder: "xxxxxx",
+			placeholder: "+38xxx xx xx xxx",
+			type: "tel",
+			name: "phone",
+			label: "Телефон", 
+			id: "phone",
+			rules: {
+				required: "This is a required field"
+			}
+		},
+		{
+			as: Input,
+			placeholder: "xxxxxxxx",
 			type: "password",
 			name: "password",
 			label: "Пароль", 
 			id: "password",
-			// rules: {
-			// 	required: "This is a required field",
-			// 	minLength: {
-			// 		value: 6,
-			// 		message: 'Password should have minimum length of 6'
-			// 	}
-			// }
+			rules: {
+				required: "This is a required field",
+				minLength: {
+					value: 8,
+					message: 'Password should have minimum length of 8'
+				}
+			}
 		},
 		{
 			as: Input,
-			placeholder: "xxxxxx",
+			placeholder: "xxxxxxxx",
 			type: "password",
-			name: "confirmPassword",
+			name: "re_password",
 			label: "Підтвердіть пароль", 
-			id: "confirm-password",
-			// rules: {
-			// 	required: "This is a required field",
-			// 	validate: confirmPasswordValue => {
-			// 		const passwordValue = getValues('password')
+			id: "re_password",
+			rules: {
+				required: "This is a required field",
+				validate: confirmPasswordValue => {
+					const passwordValue = getValues('password')
 
-			// 		if(confirmPasswordValue === passwordValue) return null
+					if(confirmPasswordValue === passwordValue) return null
 
-			// 		return 'Password and confirm password should match'
-			// 	}
-			// }
+					return 'Password and confirm password should match'
+				}
+			}
 		} 
 	]
 
 	const fields = isLogInMode ? LOG_IN_FIELDS : REGISTER_FIELDS;
+
+	const { isSubmitting } = formState;
 
 	return (
 		<div className="auth-window">
@@ -126,24 +186,24 @@ export const AuthWindow = () => {
 			</div>
 			<div className="auth-window__sign-in sign-in d-flex justify-content-between align-items-center">
 				<div className="sign-in__original-auth auth-original">
-					<form autoComplete="off" noValidate className="auth-original__form mb-3">
+					<form autoComplete="off" noValidate className="auth-original__form mb-3" onSubmit={handleSubmit(onSubmit, onError)}>
 						<fieldset className="auth-original__fieldset">
 							{fields.map(({ id, ...other }) => (
 							<FormControl 
 							key={id}
-							// control={control}
+							control={control}
 							id={id} 
 							className="auth-original__form-control mb-4"
-							// errors={errors}
+							errors={errors}
 							{...other} 
 							/>
 							))}
 						</fieldset>
-						<div class="auth-original__options d-flex justify-content-between">
+						<div className="auth-original__options d-flex justify-content-between">
 							<div><input type='checkbox' name='remember-me' value='yes'/>Запам‘ятати мене</div>
 							<div>Забули пароль?</div>
 						</div>
-						<Button type='submit' className='auth-original__submit-button w-100'>
+						<Button type='submit' className='auth-original__submit-button w-100' disabled={isSubmitting}>
 							{isLogInMode ? 'Увійти' : 'Зареєструватись'}
 						</Button>
 					</form>
