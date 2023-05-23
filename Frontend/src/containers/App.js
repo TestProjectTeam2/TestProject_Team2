@@ -5,6 +5,7 @@ import { Routes, Route} from 'react-router-dom';
 import Error from '../pages/Error/Error';
 import { AuthWindow } from '../components/AuthWindow/AuthWindow';
 import {ProductCardPage} from '../pages/ProductCardPage/ProductCardPage';
+import { Activate } from '../components/Activate/Activate';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path='/favorite' element={<Favorite />} />
           </Route> */}
           {/* <Route path='/product-list' element={<ProductList />} /> */}
+			<Route path='/login/activate/:uid/:token' element={<Activate/>} />
         </Route>
         <Route path='*' element={<Error />} />
       </Routes>
