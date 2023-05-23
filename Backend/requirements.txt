@@ -10,3 +10,5 @@ djoser==2.2.0
 djangorestframework-simplejwt==5.2.2
 PyJWT==2.7.0
 python-dotenv==1.0.0
+drf_yasg==1.21.5
+unidecode==1.3.6
