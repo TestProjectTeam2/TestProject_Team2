@@ -76,8 +76,9 @@ export const AuthWindow = () => {
 			
 			const { name } = response;
 			// Handle errors
-			if (!name) return alert('Помилка. Можливо користувач вже існує');
-			alert(`Вітаю ${name}Перейдіть на пошту, щоб підтвердити обліковий запит`)
+			if (!name) return alert('Перейдіть на пошту, щоб підтвердити обліковий запит');
+			// dispatch(authenticateUser(token, uid))
+			console.log(`Your name is ${name}`);
 		},
 		onError: () => alert('Запит не був відправлений')
 });

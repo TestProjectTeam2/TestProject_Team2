@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'users',
     "categories.apps.CategoriesConfig",
     'product',
+    'order.apps.OrderConfig',
     # third-party apps
     'rest_framework',
     'djoser',

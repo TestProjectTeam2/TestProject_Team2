@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { useMutation } from "../../hooks/useMutation";
+import { authenticateUser } from '../../store/actions/auth';
 
-export const Activate = () => {
+export const Activate = (match) => {
 
 	const [verified, setVerified] = useState(false);
 
-	const activationUrl = 'http://127.0.0.1:8000/auth/users/activation/';
+	const activationUrl = 'http://127.0.0.1:8000/auth/users/activation/'
 
 	const dispatch = useDispatch();
 
@@ -18,31 +19,35 @@ export const Activate = () => {
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		onSuccess: () => {
+		onSuccess: response => {
+			
+			const { uid, token } = response;
 			// Handle errors
-			alert('Запит пройшов успішно');
+			if (!uid && !token) return alert('Запит пройшов, але токенів нема');
+			dispatch(authenticateUser(uid, token))
+			// console.log(token, uid);
 		},
-		// onError: () => alert('Запит не був відправлений')
+		onError: () => alert('Запит не був відправлений')
 	});
 
-	const { uid } = useParams();
-	const { token } = useParams();
 
 	const verifyAccount = e => {
+		const uid = match.params.uid;
+      const token = match.params.token;
+
 		mutate(JSON.stringify({ uid, token }));
       setVerified(true);
 	}
 
 	if (verified) {
-		return <Navigate to="/login"/>;
+		return <Navigate to="/"/>;
 	}
 
 	return (
 	<div className="activate d-flex justify-content-center align-items-center my-5">
-		<div className="activate-container text-center p-5">
-			<h1 className="my-5">Activate your account</h1>
-			<Button type="button"  className="my-5" onClick={verifyAccount}>Activate</Button>
-		</div>
+		<Button type="submit" onClick={verifyAccount}>Activate your account</Button>
 	</div>
 	)
 }
+
+// export default Activate;
