@@ -4,7 +4,6 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { useMutation } from "../../hooks/useMutation";
-import { authenticateUser } from '../../store/actions/auth';
 
 export const Activate = () => {
 
