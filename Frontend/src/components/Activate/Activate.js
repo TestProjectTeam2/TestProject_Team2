@@ -9,7 +9,7 @@ export const Activate = () => {
 
 	const [verified, setVerified] = useState(false);
 
-	const activationUrl = 'http://127.0.0.1:8000/auth/users/activation/'
+	const activationUrl = 'http://127.0.0.1:8000/auth/users/activation/';
 
 	const dispatch = useDispatch();
 
@@ -46,5 +46,3 @@ export const Activate = () => {
 	</div>
 	)
 }
-
-// export default Activate;
