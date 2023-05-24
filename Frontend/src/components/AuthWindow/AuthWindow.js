@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Button } from 'react-bootstrap';
+import { Navigate } from 'react-router-dom';
 
 import { authenticateUser } from '../../store/actions/auth';
 import { useMutation } from '../../hooks/useMutation';
@@ -73,12 +74,12 @@ export const AuthWindow = () => {
 		},
 		onSuccess: response => {
 			
-			const { token, uid } = response;
+			const { name } = response;
 			// Handle errors
-			if (!token && !uid) return alert('Запит був здійснений');
-			dispatch(authenticateUser(token, uid))
-			// console.log(token, uid);
-		}
+			if (!name) return alert('Помилка. Можливо користувач вже існує');
+			alert(`Вітаю ${name}Перейдіть на пошту, щоб підтвердити обліковий запит`)
+		},
+		onError: () => alert('Запит не був відправлений')
 });
 
 	useEffect(() => {
