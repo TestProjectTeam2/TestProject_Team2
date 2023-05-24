@@ -6,7 +6,7 @@ import Error from '../pages/Error/Error';
 import { AuthWindow } from '../components/AuthWindow/AuthWindow';
 import {ProductCardPage} from '../pages/ProductCardPage/ProductCardPage';
 import CartPage from '../pages/CartPage/CartPage';
-import { Activate } from '../components/Activate';
+import { Activate } from '../components/Activate/Activate';
 
 function App() {
   return (

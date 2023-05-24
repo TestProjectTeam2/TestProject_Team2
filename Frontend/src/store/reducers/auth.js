@@ -1,8 +1,8 @@
 import * as types from '../actionTypes';
 
 const INITIAL_STATE = {
-	token: null,
-	uid: null,
+	accessToken: null,
+	refreshToken: null,
 	user: null,
 };
 

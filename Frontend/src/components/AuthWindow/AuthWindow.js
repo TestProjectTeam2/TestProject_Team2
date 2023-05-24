@@ -15,8 +15,6 @@ const LOG_IN_MODE = 'log-in';
 const REGISTER_MODE = 'register';
 const EMAIL_PATTERN = /^[a-zA-Z-._0-9]+@[a-z]+\.[a-z]{2,3}$/
 
-const authUrl = 'http://127.0.0.1:8000/auth/users/';
-
 const LOG_IN_FIELDS = [
 	{
 		as: Input,
@@ -49,7 +47,7 @@ const LOG_IN_FIELDS = [
 		}
 	}
 ]
-const selectIdToken = state => !!state.auth.token;
+const selectAccessToken = state => !!state.auth.accessToken;
 
 export const AuthWindow = () => {
 
@@ -57,6 +55,9 @@ export const AuthWindow = () => {
 
 	const isLogInMode = mode === LOG_IN_MODE;
 
+	const authUrl = isLogInMode 
+	? 'http://127.0.0.1:8000/auth/jwt/create/' 
+	: 'http://127.0.0.1:8000/auth/users/';
 
 	const handleSwitchMode = () => {
 		setMode(prevMode => (prevMode === LOG_IN_MODE ? REGISTER_MODE : LOG_IN_MODE));
@@ -64,7 +65,7 @@ export const AuthWindow = () => {
 
 	const { control, handleSubmit, formState: {errors}, formState, getValues, clearErrors, reset } = useForm({});
 
-	const isAuthenticated = useSelector(selectIdToken);
+	const isAuthenticated = useSelector(selectAccessToken);
 	const dispatch = useDispatch();
 
 	const {mutate} = useMutation({
@@ -72,20 +73,28 @@ export const AuthWindow = () => {
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		onSuccess: response => {
+		onSuccess: isLogInMode 
+		? response => {
+			const { accessToken, refreshToken } = response;
+
+			if (!accessToken && !refreshToken) return alert('Помилка. Токени не були передані');;
+			dispatch(authenticateUser(accessToken, refreshToken))
+		} : response => {
 			
 			const { name } = response;
 			// Handle errors
 			if (!name) return alert('Помилка. Можливо користувач вже існує');
 			alert(`Вітаю ${name}Перейдіть на пошту, щоб підтвердити обліковий запит`)
 		},
-		onError: () => alert('Запит не був відправлений')
+		onError:() => alert('Запит не був відправлений')
 });
 
 	useEffect(() => {
 		reset();
 		clearErrors();
 	}, [mode, reset, clearErrors]);
+
+	if (isAuthenticated) return <Navigate to="/"/>;
 
 	const onSubmit = values => {
 		mutate(JSON.stringify(values));
