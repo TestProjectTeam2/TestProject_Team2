@@ -5,9 +5,9 @@ import { Routes, Route} from 'react-router-dom';
 import Error from '../pages/Error/Error';
 import { AuthWindow } from '../components/AuthWindow/AuthWindow';
 import {ProductCardPage} from '../pages/ProductCardPage/ProductCardPage';
-import { Activate } from '../components/Activate/Activate';
 import OrderPage from '../pages/OrderPage/OrderPage';
 import CartPage from '../pages/CartPage/CartPage';
+import { Activate } from '../components/Activate/Activate';
 
 function App() {
   return (
