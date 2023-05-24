@@ -3,8 +3,8 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from categories.models import Category
-from categories.serializers import CategorySerializer
+from .models import Category
+from .serializers import CategorySerializer
 
 
 class CategoriesAPIViewSet(viewsets.ModelViewSet):
@@ -14,7 +14,7 @@ class CategoriesAPIViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     lookup_field = 'slug'
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         if self.action == 'list':
