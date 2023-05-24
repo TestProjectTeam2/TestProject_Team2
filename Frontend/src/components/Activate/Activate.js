@@ -4,7 +4,6 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { useMutation } from "../../hooks/useMutation";
-import { authenticateUser } from '../../store/actions/auth';
 
 export const Activate = () => {
 
@@ -40,7 +39,10 @@ export const Activate = () => {
 
 	return (
 	<div className="activate d-flex justify-content-center align-items-center my-5">
-		<Button type="button" onClick={verifyAccount}>Activate your account</Button>
+		<div className="activate-container text-center p-5">
+			<h1 className="my-5">Activate your account</h1>
+			<Button type="button"  className="my-5" onClick={verifyAccount}>Activate</Button>
+		</div>
 	</div>
 	)
 }

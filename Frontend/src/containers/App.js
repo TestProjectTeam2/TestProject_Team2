@@ -21,7 +21,7 @@ function App() {
               <Route path='/favorite' element={<Favorite />} />
           </Route> */}
           {/* <Route path='/product-list' element={<ProductList />} /> */}
-			<Route path='/login/activate/:uid/:token' element={<Activate/>} />
+			<Route path='/activate/:uid/:token' element={<Activate/>} />
         </Route>
         <Route path='*' element={<Error />} />
       </Routes>
