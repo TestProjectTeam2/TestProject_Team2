@@ -1,8 +1,8 @@
 import uuid
+from unidecode import unidecode
 
 from django.db import models
 from django.utils.text import slugify
-from django.urls import reverse
 
 from categories.models import Category
 
@@ -16,7 +16,7 @@ class Product(models.Model):
     discount = models.IntegerField(null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE, related_name='products')
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True, default=id)
 
     class Meta:
         ordering = ('name',)
@@ -29,12 +29,8 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         """Save the object with a slug based on the name."""
-        self.slug = slugify(self.name)
+        self.slug = slugify(unidecode(str(self.name)))
         super().save(*args, **kwargs)
-
-    def get_absolute_url(self):
-        """Get absolute url with argument slug"""
-        return reverse('products', args=[self.slug])
 
 
 class Brand(models.Model):
@@ -42,7 +38,7 @@ class Brand(models.Model):
     id = models.AutoField(primary_key=True, editable=False)
     name = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, editable=False)
 
     class Meta:
         ordering = ('name',)
@@ -55,9 +51,5 @@ class Brand(models.Model):
 
     def save(self, *args, **kwargs):
         """Save the object with a slug based on the name."""
-        self.slug = slugify(self.name)
+        self.slug = slugify(unidecode(str(self.name)))
         super().save(*args, **kwargs)
-
-    def get_absolute_url(self):
-        """Get absolute url with argument slug"""
-        return reverse('brands', args=[self.slug])
