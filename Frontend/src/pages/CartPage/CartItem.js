@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import './CartItem.scss';
 
-export default function CartItem() {
+export default function CartItem({mutability}) {
     const [count, setCount] = useState(1);
+    
     function increment() {
         const newValue = count + 1;
         if (newValue <= 42) {
@@ -25,9 +27,15 @@ export default function CartItem() {
             <div className="count-button">
                 <p className="title">Кількість</p>
                 <div>
+                {mutability ? (
+                  <>
                     <button type="button" onClick={decrement}>-</button>
-                    <input type="text" defaultValue={1} value={count}/>
+                    <input type="text" defaultValue={1} value={count} readOnly />
                     <button type="button" onClick={increment}>+</button>
+                  </>
+                ) : (
+                  <span>{count}</span>
+                )}                
                 </div>
             </div>
             <div className="price">
@@ -35,7 +43,10 @@ export default function CartItem() {
                 <p className="old-price">47999</p>
                 <p className="new-price">35 999 ₴</p>
             </div>
+            {mutability && (
             <button className="deleteButton"><img src="/images/icons/delete.svg" alt="delete"/></button>
+            )}                
+
         </div>
     );
 }

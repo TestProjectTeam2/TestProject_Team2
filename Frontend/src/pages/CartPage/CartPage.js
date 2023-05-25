@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import {  useNavigate } from 'react-router-dom';
+import {  NavLink, useNavigate } from 'react-router-dom';
 import { BuyWith } from "../../components/BuyWith/BuyWith";
 import CartItem from "./CartItem";
 import './CartPage.scss';
@@ -12,7 +12,7 @@ export default function CartPage() {
             <div className="cart">
                 <h1>Кошик</h1>
                 <hr />
-                <CartItem />
+                <CartItem mutability={true} />
                 <hr />
                 <div className="general">
                     <button onClick={() => navigate(-1)} id="back">
@@ -20,7 +20,9 @@ export default function CartPage() {
                         Продовжити вибір товарів
                     </button>
                     <h2>Разом: 35999 ₴</h2>
-                    <Button id="order">Оформити замовлення</Button>
+                    <Button id="order">
+                        <NavLink to="/order">Оформити замовлення</NavLink>
+                    </Button>
                 </div>
             </div>
             <BuyWith />

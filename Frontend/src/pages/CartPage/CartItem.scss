@@ -1,0 +1,66 @@
+@import '../../styles/variables.scss';
+
+.cartItem {
+    display: flex;
+    margin: 80px 40px;
+    justify-content: space-between;
+    img {
+        width: 150px;
+        margin: 20px;
+    }
+    .product__title {
+        margin-top: 35px;
+        h4 {
+            font-size: 16px;
+            max-width: 400px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }    
+        .code {
+            font-size: 14px;
+            color: $light_text
+        }
+    }
+    
+    .title {
+        font-size: 10px;
+        color: $light_text;
+    }
+    .count-button {
+        margin-top: 35px;
+        text-align: center;
+        input {
+            width: 35px;
+            border: 1px solid $stroke;
+            border-radius: 8px;
+            padding: 6px;
+        }
+        button {
+            border: none;
+            background-color: $bg;
+            padding: 5px 35px;
+        }
+    }
+    .price {
+        margin-top: 35px;
+        text-align: center;
+        .old-price {
+            text-decoration: line-through;
+            font-size: 14px;
+            color: $light_text;
+        }
+        .new-price {
+            font-size: 24px;
+            margin-top: -15%;
+        }
+    }
+
+    .deleteButton {
+        border: none;
+        background-color: $bg;
+        img {
+            width: 20px;
+        }
+    }
+}
