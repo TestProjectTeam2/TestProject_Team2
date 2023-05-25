@@ -9,7 +9,7 @@ export const Activate = () => {
 
 	const [verified, setVerified] = useState(false);
 
-	const activationUrl = 'http://127.0.0.1:8000/auth/users/activation/';
+	const activationUrl = 'http://127.0.0.1:8000/api/auth/users/activation/';
 
 	const dispatch = useDispatch();
 
@@ -18,11 +18,10 @@ export const Activate = () => {
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		onSuccess: () => {
-			// Handle errors
-			alert('Запит пройшов успішно');
+		onSuccess: response => {
+			if (response) return alert('Запит успішний');
 		},
-		// onError: () => alert('Запит не був відправлений')
+		onError: () => alert('Запит не був відправлений')
 	});
 
 	const { uid } = useParams();

@@ -56,8 +56,8 @@ export const AuthWindow = () => {
 	const isLogInMode = mode === LOG_IN_MODE;
 
 	const authUrl = isLogInMode 
-	? 'http://127.0.0.1:8000/auth/jwt/create/' 
-	: 'http://127.0.0.1:8000/auth/users/';
+	? 'http://127.0.0.1:8000/api/auth/jwt/create/' 
+	: 'http://127.0.0.1:8000/api/auth/users/';
 
 	const handleSwitchMode = () => {
 		setMode(prevMode => (prevMode === LOG_IN_MODE ? REGISTER_MODE : LOG_IN_MODE));
@@ -75,10 +75,11 @@ export const AuthWindow = () => {
 		},
 		onSuccess: isLogInMode 
 		? response => {
-			const { accessToken, refreshToken } = response;
+			const { refresh, access } = response;
 
-			if (!accessToken && !refreshToken) return alert('Помилка. Токени не були передані');;
-			dispatch(authenticateUser(accessToken, refreshToken))
+			if (!refresh && !access) return alert('Помилка. Токени не були передані');
+			alert('Запит успішний')
+			dispatch(authenticateUser(access, refresh))
 		} : response => {
 			
 			const { name } = response;
