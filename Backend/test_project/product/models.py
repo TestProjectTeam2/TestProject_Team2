@@ -16,7 +16,7 @@ class Product(models.Model):
     discount = models.IntegerField(null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE, related_name='products')
-    slug = models.SlugField(unique=True, blank=True, default=id)
+    slug = models.SlugField(unique=True, editable=False)
 
     class Meta:
         ordering = ('name',)
@@ -38,7 +38,7 @@ class Brand(models.Model):
     id = models.AutoField(primary_key=True, editable=False)
     name = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, editable=False)
+    slug = models.SlugField(unique=True)
 
     class Meta:
         ordering = ('name',)
