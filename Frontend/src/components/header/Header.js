@@ -3,8 +3,13 @@ import './Header.scss';
 import {Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import Catalog from "../catalog/Catalog";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+const selectAccessToken = state => !!state.auth.accessToken;
 
 export default function Header() {
+	const isAuthenticated = useSelector(selectAccessToken);
+
     return(
         <header>
             <div className="banner">
@@ -84,8 +89,8 @@ export default function Header() {
                             </NavLink>
                         </Nav.Link>
                         <Nav.Link>
-                            <NavLink to='/login'>
-                                <img src="/images/icons/person.svg" alt="personal cabinet"/>
+                            <NavLink to={isAuthenticated ? '/cabinet' : '/login'}>
+                                <img src="/images/icons/person.svg"/>
                             </NavLink>
                         </Nav.Link>
 

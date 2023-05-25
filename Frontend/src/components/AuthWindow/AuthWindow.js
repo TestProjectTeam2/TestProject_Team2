@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 
 import { authenticateUser } from '../../store/actions/auth';
+import { addUser } from '../../store/actions/auth';
 import { useMutation } from '../../hooks/useMutation';
 import { FormControl } from '../FormControl/FormControl';
 import { Input } from '../Input/Input';
@@ -79,14 +80,14 @@ export const AuthWindow = () => {
 
 			if (!refresh && !access) return alert('Помилка. Токени не були передані');
 			alert('Запит успішний')
-			dispatch(authenticateUser(access, refresh))
+			dispatch(authenticateUser(refresh, access))
 		} : response => {
 			
 			const { name } = response;
 			// Handle errors
-			if (!name) return alert('Перейдіть на пошту, щоб підтвердити обліковий запит');
-			// dispatch(authenticateUser(token, uid))
-			console.log(`Your name is ${name}`);
+			if (!name) return alert('Помилка. Можливо користувач вже існує');
+			alert(`Вітаю ${name}. Перейдіть на пошту, щоб підтвердити обліковий запит`)
+			dispatch(addUser(response))
 		},
 		onError:() => alert('Запит не був відправлений')
 });
