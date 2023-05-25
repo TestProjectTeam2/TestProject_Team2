@@ -4,6 +4,9 @@ from django.db import models
 
 from mptt.managers import TreeManager
 from mptt.models import MPTTModel, TreeForeignKey
+from django.urls import reverse
+
+from social_core.utils import slugify
 
 
 class CategoryManager(TreeManager):
@@ -21,7 +24,7 @@ class Category(MPTTModel):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=120, db_index=True, unique=True)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True, editable=False)
     description = models.TextField(null=True, blank=True)
     parent = TreeForeignKey(   # MPTT model Field represents a parent of subcategory (if exists) in tree structure.
         "self",
@@ -36,7 +39,12 @@ class Category(MPTTModel):
         verbose_name_plural = 'categories'
 
     def get_absolute_url(self):
-        return f"/products/{self.slug}/"
+        return reverse('category-detail', kwargs={'slug': self.slug})
 
     def __str__(self) -> str:
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)

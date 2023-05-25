@@ -3,8 +3,8 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from categories.models import Category
-from categories.serializers import CategorySerializer
+from .models import Category
+from .serializers import CategorySerializer
 
 
 class CategoriesAPIViewSet(viewsets.ModelViewSet):
