@@ -7,6 +7,8 @@ import { AuthWindow } from '../components/AuthWindow/AuthWindow';
 import {ProductCardPage} from '../pages/ProductCardPage/ProductCardPage';
 import CartPage from '../pages/CartPage/CartPage';
 import { Activate } from '../components/Activate/Activate';
+import { Cabinet } from '../pages/Cabinet/Cabinet';
+
 
 function App() {
   return (
@@ -17,10 +19,10 @@ function App() {
           <Route path='/login' element={<AuthWindow />} />
           <Route path='/product' element={<ProductCardPage />} />
           <Route path='/cart' element={<CartPage />} />
-          {/* <Route path='/cabinet' element={<Cabinet />}>
-              <Route path='/personal-info' element={<PersonalInfo />} />
-              <Route path='/favorite' element={<Favorite />} />
-          </Route> */}
+          <Route path='/cabinet' element={<Cabinet/>}>
+              {/* <Route path='/personal-info' element={<PersonalInfo />} />
+              <Route path='/favorite' element={<Favorite />} /> */}
+          </Route>
           {/* <Route path='/product-list' element={<ProductList />} /> */}
 			<Route path='/activate/:uid/:token' element={<Activate/>} />
         </Route>
