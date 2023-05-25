@@ -3,8 +3,11 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from .models import Category
-from .serializers import CategorySerializer
+from product.models import Product
+from product.serializers import ProductSerializer
+
+from categories.models import Category
+from categories.serializers import CategorySerializer
 
 
 class CategoriesAPIViewSet(viewsets.ModelViewSet):
@@ -27,7 +30,7 @@ class CategoriesAPIViewSet(viewsets.ModelViewSet):
     @action(methods=["get"], detail=False, url_path=r"(?P<slug>[-\w]+)/children")
     def children(self, request, slug=None):
 
-        """ Method retrieves children objects of a parent slug endpoint entered. Returns 404 otherwise."""
+        """ Action retrieves children objects of a parent slug endpoint entered. Returns 404 otherwise."""
 
         try:
             parent = Category.objects.get(slug__iexact=slug)  # gets parent's object slug (case insensitive)
@@ -36,3 +39,22 @@ class CategoriesAPIViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         except Category.DoesNotExist:
             return Response({"message": "Parent category not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    @action(methods=["get"], detail=False, url_path=r"(?P<slug>[-\w]+)/filter", serializer_class=ProductSerializer)
+    def filter(self, request, slug=None):
+
+        """ Action retrieves all products filtered by brand parameter given. Return error as response otherwise"""
+
+        if request.query_params:
+            brand = request.query_params.get('brand')
+            if slug:
+                # Returns all products in category represented by slug value
+                category = Category.objects.get(slug=slug).id
+                filtered_products = Product.objects.filter(brand__name=brand, category=category)
+            else:
+                # If slug not provided just returns all products of requested brand in current URL path
+                filtered_products = Product.objects.filter(brand__name=brand)
+            serializer = self.get_serializer(filtered_products, many=True)
+            return Response(serializer.data)
+        else:
+            return Response({"error": "expecting parameter 'brand'"})

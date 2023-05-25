@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.relations import SlugRelatedField
 
 from categories.models import Category
 
@@ -11,7 +12,11 @@ class RecursiveField(serializers.Serializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     child = RecursiveField(many=True, read_only=True)
-    slug = serializers.SlugField(read_only=False)
+    parent = SlugRelatedField(    # Displays a parent category by slug value instead of weird UUID value.
+        queryset=Category.objects.all(),
+        slug_field='slug',
+        required=False
+    )
 
     class Meta:
         model = Category

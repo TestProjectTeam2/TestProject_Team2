@@ -24,7 +24,7 @@ class Category(MPTTModel):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=120, db_index=True, unique=True)
-    slug = models.SlugField(unique=True, blank=True, editable=False)
+    slug = models.SlugField(unique=True, editable=False)
     description = models.TextField(null=True, blank=True)
     parent = TreeForeignKey(   # MPTT model Field represents a parent of subcategory (if exists) in tree structure.
         "self",
