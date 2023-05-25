@@ -207,11 +207,11 @@ export const ProductCardTabs = () => {
 										</div>
 										<div className='revies__likes d-flex justify-content-end align-items-end text-right'>
 											<div className='revies__dislike d-flex'>
-												<img src='/images/icons/thumb_down.svg'/>
+												<img src='/images/icons/thumb_down.svg' alt='dislike' />
 												<div className='mx-1 align-self-end'>{dislike}</div>
 											</div>
 											<div className='revies__like d-flex'>
-												<img src='/images/icons/thumb_up.svg'/>
+												<img src='/images/icons/thumb_up.svg' alt='like' />
 												<div className='mx-1 align-self-end'>{like}</div>
 											</div>
 										</div>

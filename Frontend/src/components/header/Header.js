@@ -14,7 +14,7 @@ export default function Header() {
                 <Container>
                     <Navbar.Brand>
                         <NavLink to="/">
-                            <img src="/images/icons/TechZoneDark.svg"/>
+                            <img src="/images/icons/TechZoneDark.svg" alt="logo"/>
                         </NavLink>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -26,10 +26,10 @@ export default function Header() {
                         <Nav.Link href="#home">Оплата частинами</Nav.Link>
                         <NavDropdown title="Зв'затись з нами" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">
-                                <a>+ 38 (093) 227 44 65</a>
+                                <a href="#">+ 38 (093) 227 44 65</a>
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
-                                <a>+ 38 (093) 227 44 65</a>
+                                <a href="#">+ 38 (093) 227 44 65</a>
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.3">
                                 <a href="mailto:techzone@gmail.com">techzone@gmail.com</a>    
@@ -68,24 +68,24 @@ export default function Header() {
                             placeholder="Пошук товарів"
                             className="me-2"
                             aria-label="Search"/>
-                                <button id="search"><img src="/images/icons/search.svg"/></button>
+                                <button id="search"><img src="/images/icons/search.svg" alt="search"/></button>
                             </form>
                     </Nav>
                     <Nav>
                         <Nav.Link>
-                            <img src="/images/icons/balance_light.svg"/>
+                            <img src="/images/icons/balance_light.svg" alt="compare"/>
                         </Nav.Link>
                         <Nav.Link>
-                            <img src="/images/icons/favorite_light.svg"/>
+                            <img src="/images/icons/favorite_light.svg" alt="favorite"/>
                         </Nav.Link>
                         <Nav.Link>
                             <NavLink to="/cart">
-                                <img src="/images/icons/shopping_cart.svg"/>
+                                <img src="/images/icons/shopping_cart.svg" alt="cart"/>
                             </NavLink>
                         </Nav.Link>
                         <Nav.Link>
                             <NavLink to='/login'>
-                                <img src="/images/icons/person.svg"/>
+                                <img src="/images/icons/person.svg" alt="personal cabinet"/>
                             </NavLink>
                         </Nav.Link>
 
