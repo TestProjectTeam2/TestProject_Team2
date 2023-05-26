@@ -29,7 +29,9 @@ export default function CartItem({mutability, slug}) {
 
     return(
         <div className="cartItem">
-            <img  alt="product" src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08183651.png"/>
+            {product && (
+            <img alt="product" src={`${product.url_img}`} />
+            )}
             <div className="product__title">
             {product && (
               <>

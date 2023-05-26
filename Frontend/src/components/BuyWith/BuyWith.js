@@ -24,7 +24,7 @@ export function BuyWith() {
 		<div className='buy-with__title'>З цим товаром купують</div>
 		<div className='buy-with__card-container'>
 			{products && products.slice(0, 4).map((product) => (
-				<ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+				<ProductCard name={product.name} oldPrice={product.price} img={product.url_img} discount={product.discount} slug={product.slug}/>
 			))}
 		</div>
 	</div>

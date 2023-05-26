@@ -17,6 +17,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     brand = models.ForeignKey('Brand', on_delete=models.CASCADE, related_name='products')
     slug = models.SlugField(unique=True, editable=False)
+    url_img = models.CharField(max_length=255, null=True)
 
     class Meta:
         ordering = ('name',)

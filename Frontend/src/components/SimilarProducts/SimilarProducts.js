@@ -23,7 +23,7 @@ export function SimilarProducts() {
 		<div className='similar-products__title'>Схожі товари</div>
 		<div className='similar-products__card-container'>
 			{products && products.slice(0, 4).map((product) => (
-					<ProductCard name={product.name} oldPrice={product.price} discount={product.discount} />
+					<ProductCard name={product.name} img={product.url_img} oldPrice={product.price} discount={product.discount} />
 			))}
 		</div>
 	</div>

@@ -3,7 +3,7 @@ import {Card} from 'react-bootstrap';
 import './ProductCard.scss';
 import { NavLink } from 'react-router-dom';
 
-export default function ProductCard({name, oldPrice, discount, slug}) {
+export default function ProductCard({name, oldPrice, discount, slug, img}) {
 
 	function calculatePrice(discount, oldPrice) {
 		const discountAmount = Number((discount / 100) * oldPrice);
@@ -24,7 +24,7 @@ export default function ProductCard({name, oldPrice, discount, slug}) {
 				<div className='product__availability align-self-end'><span></span>Товар в наявності</div>
 			</div>
 			<div className="product__image-wrapper text-center position-relative">
-				<img  alt="product" src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08183651.png"/>
+				<img  alt="product" src={`${img}`}/>
 			</div>
 			<div className="product__info">
 				<div className="product__title-wrapper">

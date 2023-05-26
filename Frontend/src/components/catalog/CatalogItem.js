@@ -13,7 +13,7 @@ export default function CatalogItem({ subcategories }) {
             <NavLink to={`/product-list/${subcategory.child[0].slug}`}>
               <p>{subcategory.child[0].name}</p>
             </NavLink>
-            <NavLink to={`/product-list/${subcategory.child[0].slug}`}>
+            <NavLink to={`/product-list/${subcategory.child[1].slug}`}>
               <p>{subcategory.child[1].name}</p>
             </NavLink>
           </div>
