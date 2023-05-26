@@ -34,7 +34,7 @@ export default function Catalog() {
               <Row>
                 <Col className='categories' md={3}>
                   <Nav className="flex-column">
-                    {data.map((category) => (
+                    {data && data.map((category) => (
                       <Nav.Item>
                         <Nav.Link className="category" eventKey={category.slug}>
                           <p>{category.name}</p>
@@ -46,7 +46,7 @@ export default function Catalog() {
                 </Col>
                 <Col >
                   <Tab.Content>
-                    {data.map((category) => (
+                    {data && data.map((category) => (
                       <Tab.Pane eventKey={category.slug}>
                         <CatalogItem subcategories={category.child} /> 
                       </Tab.Pane>

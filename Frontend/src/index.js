@@ -11,6 +11,11 @@ import { rootReducer } from './store/rootReducer';
 
 const store = configureStore({ reducer: rootReducer });
 
+store.subscribe(() => {
+	const state = store.getState();
+	console.log("State updated:", state);
+  });
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
