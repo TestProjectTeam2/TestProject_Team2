@@ -18,6 +18,7 @@ export const authReducer = (state = INITIAL_STATE, {type, payload}) => {
 			return {
 				...state,
 				...payload
+				// user: payload
 			};
 
 		case types.LOGOUT_USER:
