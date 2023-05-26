@@ -12,8 +12,11 @@ class RecursiveField(serializers.Serializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     child = RecursiveField(many=True, read_only=True)
-    # Changed serialization of parent category to be displayed by slug value instead of weird UUID value.
-    parent = SlugRelatedField(slug_field='slug', queryset=Category.objects.all(), required=False, allow_null=True)
+    # parent = SlugRelatedField(    # Displays a parent category by slug value instead of weird UUID value.
+    #     queryset=Category.objects.all(),
+    #     slug_field='slug',
+    #     required=False
+    # )
 
     class Meta:
         model = Category
