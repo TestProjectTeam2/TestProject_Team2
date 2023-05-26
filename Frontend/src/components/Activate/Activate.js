@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { Navigate, useParams, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Navigate, useParams } from 'react-router-dom';
 
 import { useMutation } from "../../hooks/useMutation";
 import { authenticateUser } from '../../store/actions/auth';
@@ -12,10 +11,6 @@ export const Activate = (match) => {
 
 	const activationUrl = 'http://127.0.0.1:8000/api/auth/users/activation/';
 
-	const {pathname} = useLocation();
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-
 	const {mutate} = useMutation({
 		url: activationUrl,
 		headers: {
@@ -24,7 +19,6 @@ export const Activate = (match) => {
 		onSuccess: response => {
 			if (response) return alert('Запит успішний');
 		},
-		// onError: () => alert('Запит не був відправлений')
 	});
 
 
