@@ -30,20 +30,7 @@ class Order(models.Model):
     delivery_way = models.CharField(max_length=10, choices=DELIVERY, verbose_name='Спосіб доставки')
     payment = models.CharField(max_length=10, choices=PAYMENT)
     date = models.DateField(auto_now=True)
-    total = models.DecimalField(max_digits=10, decimal_places=2, default=0, verbose_name='Сумма заказа')
-
-    @property
-    def total_price(self):
-        total = 0
-        for item in self.order_products.all():
-            price = item.product.price * item.quantity
-            disc = Decimal(item.product.discount / 100)
-            total += price - (price * disc)
-        return total
-
-    def save(self, *args, **kwargs):
-        self.total = self.total_price
-        super().save(*args, **kwargs)
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0, verbose_name='Вартість замовлення')
 
 
     class Meta:
@@ -57,3 +44,12 @@ class OrderProduct(models.Model):
 
     class Meta:
         verbose_name_plural = 'Order products'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.product.count >= self.quantity:
+            self.product.count -= self.quantity
+            self.product.save()
+        else:
+
+            raise ValueError('Недостатньо товару на складі')

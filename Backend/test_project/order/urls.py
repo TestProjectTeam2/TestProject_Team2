@@ -1,5 +1,5 @@
-from .views import OrderAPIViewSet
-from django.urls import path
+from .views import OrderAPIViewSet, OrderProductAPIViewSet
+from django.urls import path, include
 from rest_framework import routers
 
 
@@ -9,6 +9,9 @@ urlpatterns = []
 
 router = routers.SimpleRouter()
 
+router.register('product', OrderProductAPIViewSet)
 router.register('', OrderAPIViewSet)
 
+
 urlpatterns += router.urls
+
