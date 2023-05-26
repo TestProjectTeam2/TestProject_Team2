@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "mptt",
     'django_mptt_admin',
     'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +50,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+	 'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://192.168.1.6:3000',
+    'http://localhost:3000',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'http://192.168.1.6:3000',
+]
+
+DOMAIN = '192.168.1.6:3000'
 
 ROOT_URLCONF = 'test_project.urls'
 
