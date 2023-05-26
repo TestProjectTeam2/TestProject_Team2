@@ -7,6 +7,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 from django.urls import reverse
 
 from social_core.utils import slugify
+from unidecode import unidecode
 
 
 class CategoryManager(TreeManager):
@@ -46,5 +47,5 @@ class Category(MPTTModel):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = slugify(unidecode(str(self.name)))
         super(Category, self).save(*args, **kwargs)
