@@ -66,7 +66,7 @@ export default function HomePage() {
                     <h2>Акційні пропозиції</h2>
                     <div className='card-container'>
                         {products && products.slice(0, 5).map((product) => (
-                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            <ProductCard name={product.name} img={product.url_img} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
                         ))}
                     </div>
                     <div className="more-link">
@@ -78,7 +78,7 @@ export default function HomePage() {
                     <h2>Гарячі новинки</h2>
                     <div className='card-container'>
                         {products && products.slice(0, 5).map((product) => (
-                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            <ProductCard name={product.name} img={product.url_img} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
                             ))}
                     </div>
                     <div className="more-link">
@@ -90,7 +90,7 @@ export default function HomePage() {
                     <h2>Найбільш обговорювані товари</h2>
                     <div className='card-container'>
                         {products && products.slice(0, 5).map((product) => (
-                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            <ProductCard name={product.name} img={product.url_img} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
                             ))}
                     </div>
                     <div className="more-link">
@@ -133,7 +133,7 @@ export default function HomePage() {
                     <h2>Найбільш очікувані товари</h2>
                     <div className='card-container'>
                         {products && products.slice(0, 5).map((product) => (
-                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            <ProductCard name={product.name} img={product.url_img} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
                             ))}
                     </div>
                     <div className="more-link">
@@ -145,7 +145,7 @@ export default function HomePage() {
                     <h2>Рекомендації на основі ваших переглядів</h2>
                     <div className='card-container'>
                         {products && products.slice(0, 5).map((product) => (
-                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            <ProductCard name={product.name} img={product.url_img} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
                             ))}
                     </div>
                     <div className="more-link">

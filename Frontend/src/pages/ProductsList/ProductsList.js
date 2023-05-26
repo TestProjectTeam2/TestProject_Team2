@@ -45,10 +45,10 @@ export default function ProductList() {
         )}
             <div className="product-list">
                 {categoryProducts !== null && categoryProducts.map((product) => (
-                    <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                    <ProductCard name={product.name} img={product.url_img} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
                 ))}
                 {categoryProducts !== null && categoryProducts.map((product) => (
-                    <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                    <ProductCard name={product.name} img={product.url_img} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
                 ))}
             </div>
         </div>
