@@ -5,13 +5,19 @@ import { BuyWith } from "../../components/BuyWith/BuyWith";
 import CartItem from "./CartItem";
 import './CartPage.scss';
 import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 export default function CartPage() {
     
     const items = useSelector((state) => state.cart.items);
     let navigate = useNavigate();
+    
     return(
         <div className="cartPage">
+            <Helmet>
+                <title>TechZone - cart</title>
+            </Helmet>
+
             <div className="cart">
                 <h1>Кошик</h1>
                 <hr />
@@ -30,7 +36,7 @@ export default function CartPage() {
                     <></>
                     )} */}
                     <Button id="order">
-                        <NavLink to="/order">Оформити замовлення</NavLink>
+                        <NavLink to="/order"><p>Оформити замовлення</p></NavLink>
                     </Button>
                 </div>
             </div>

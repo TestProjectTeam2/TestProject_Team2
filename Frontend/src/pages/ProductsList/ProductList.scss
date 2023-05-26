@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.container {
+    margin: 5%;
+    .product-list {
+        margin-top: 5%;
+        display: flex;
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .product {
+            margin: 20px;
+        }
+    }
+    
+}

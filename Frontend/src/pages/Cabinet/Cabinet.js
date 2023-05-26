@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Accordion, Navbar, Nav } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 
 import { logoutUser } from '../../store/actions/auth';
 
@@ -22,6 +23,9 @@ export const Cabinet = () => {
 
 	return (
 		<div className="cabinet d-flex my-5">
+			<Helmet>
+                <title>TechZone - personal cabinet</title>
+            </Helmet>
 			<div className='cabinet__sidebar d-flex flex-column justify-content-between'>
 				<div className='cabinet__user d-flex align-items-center p-3'>
 					<img src='/images/icons/person_black.svg' alt='person'/>

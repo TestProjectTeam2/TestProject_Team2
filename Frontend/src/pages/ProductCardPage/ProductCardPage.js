@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { Row } from "react-bootstrap";
-import { useParams, NavLink} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { ProductCardDetails } from '../../components/ProductCardDetails/ProductCardDetails';
 import { ProductCardTabs } from '../../components/ProductCardTabs/ProductCardTabs';
 import './ProductCardPage.scss';
 import { BuyWith } from "../../components/BuyWith/BuyWith";
 import { SimilarProducts } from "../../components/SimilarProducts/SimilarProducts";
 import axios from "axios";
+import { Helmet } from 'react-helmet';
 
 export function ProductCardPage() {
 	const [product, setProduct] = useState(null);
@@ -22,13 +23,16 @@ export function ProductCardPage() {
           }
         };
         fetchData();
-    }, []);
+    }, [slug]);
 
 	return (
 		<Row>
+			<Helmet>
+                <title>TechZone - {slug}</title>
+            </Helmet>
 			{product !== null && (
 			<div className="product-card">
-				<ul className="breadcrumbs">
+				{/* <ul className="breadcrumbs">
 					<li className="breadcrumbs__item">
 						<a className="breadcrumbs__link" href='#'>
 							<NavLink to="/">
@@ -50,7 +54,7 @@ export function ProductCardPage() {
 						<img src='/images/icons/icon-small=arrow-forward.svg' alt="arrow"/>
 					</li>
 					<li className="breadcrumbs__item">Ноутбук Lenovo IdeaPad Gaming 3 15IHU6 (82K101FJRA) Shadow Black</li>
-				</ul>
+				</ul> */}
 				<div className="headline">
 					<div className="headline__title">{product.name}</div>
 					<div className="headline__product-code">Код товару: <span>{product.id}</span></div>
