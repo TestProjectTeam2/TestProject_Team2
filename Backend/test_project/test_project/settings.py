@@ -31,9 +31,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # test_project apps
     'users',
-    "categories.apps.CategoriesConfig",
+    "categories",
     'product',
     'order.apps.OrderConfig',
+    "feedbacks",
     # third-party apps
     'rest_framework',
     'djoser',
