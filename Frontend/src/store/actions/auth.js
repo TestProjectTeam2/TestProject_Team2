@@ -1,21 +1,31 @@
 import * as types from "../actionTypes";
 
-const USER_ID_ALIAS = '__uid'
-const TOKEN_ALIAS = '__tkn'
+const USER_ALIAS = '__user'
+const ACCESS_TOKEN_ALIAS = '__atkn'
+const REFRESH_TOKEN_ALIAS = '__rtkn'
 
-export const authenticateUser = (uid, token) => {
-	localStorage.setItem(USER_ID_ALIAS, uid);
-	localStorage.setItem(TOKEN_ALIAS, token);
+export const authenticateUser = (refreshToken, accessToken) => {
+	localStorage.setItem(REFRESH_TOKEN_ALIAS, refreshToken);
+	localStorage.setItem(ACCESS_TOKEN_ALIAS, accessToken);
 
 	return {
 		type: types.AUTHENTICATE_USER,
-		payload: {uid, token}
+		payload: {refreshToken, accessToken}
+	}
+};
+
+export const addUser = (user) => {
+	localStorage.setItem(USER_ALIAS, user);
+
+	return {
+		type: types.ADD_USER,
+		payload: {user}
 	}
 };
 
 export const logoutUser = () => {
-	localStorage.removeItem(USER_ID_ALIAS);
-	localStorage.removeItem(TOKEN_ALIAS);
+	localStorage.removeItem(ACCESS_TOKEN_ALIAS);
+	localStorage.removeItem(REFRESH_TOKEN_ALIAS);
 
 	return {
 		type: types.LOGOUT_USER

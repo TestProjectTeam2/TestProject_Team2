@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Navigate, useParams } from 'react-router-dom';
 
 import { useMutation } from "../../hooks/useMutation";
 import { authenticateUser } from '../../store/actions/auth';
@@ -10,9 +9,7 @@ export const Activate = (match) => {
 
 	const [verified, setVerified] = useState(false);
 
-	const activationUrl = 'http://127.0.0.1:8000/auth/users/activation/'
-
-	const dispatch = useDispatch();
+	const activationUrl = 'http://127.0.0.1:8000/api/auth/users/activation/';
 
 	const {mutate} = useMutation({
 		url: activationUrl,
@@ -20,14 +17,8 @@ export const Activate = (match) => {
 			'Content-Type': 'application/json'
 		},
 		onSuccess: response => {
-			
-			const { uid, token } = response;
-			// Handle errors
-			if (!uid && !token) return alert('Запит пройшов, але токенів нема');
-			dispatch(authenticateUser(uid, token))
-			// console.log(token, uid);
+			if (response) return alert('Запит успішний');
 		},
-		onError: () => alert('Запит не був відправлений')
 	});
 
 

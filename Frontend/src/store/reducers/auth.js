@@ -1,14 +1,20 @@
 import * as types from '../actionTypes';
 
 const INITIAL_STATE = {
-	token: null,
-	uid: null,
+	refreshToken: null,
+	accessToken: null,
 	user: null,
 };
 
 export const authReducer = (state = INITIAL_STATE, {type, payload}) => {
 	switch (type) {
 		case types.AUTHENTICATE_USER:
+			return {
+				...state,
+				...payload
+			};
+
+		case types.ADD_USER:
 			return {
 				...state,
 				...payload

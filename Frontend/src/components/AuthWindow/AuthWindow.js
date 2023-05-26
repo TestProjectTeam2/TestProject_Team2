@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 
 import { authenticateUser } from '../../store/actions/auth';
+import { addUser } from '../../store/actions/auth';
 import { useMutation } from '../../hooks/useMutation';
 import { FormControl } from '../FormControl/FormControl';
 import { Input } from '../Input/Input';
@@ -14,8 +15,6 @@ import './AuthWindow.scss';
 const LOG_IN_MODE = 'log-in';
 const REGISTER_MODE = 'register';
 const EMAIL_PATTERN = /^[a-zA-Z-._0-9]+@[a-z]+\.[a-z]{2,3}$/
-
-const authUrl = 'http://127.0.0.1:8000/auth/users/';
 
 const LOG_IN_FIELDS = [
 	{
@@ -49,7 +48,7 @@ const LOG_IN_FIELDS = [
 		}
 	}
 ]
-const selectIdToken = state => !!state.auth.token;
+const selectAccessToken = state => !!state.auth.accessToken;
 
 export const AuthWindow = () => {
 
@@ -57,6 +56,9 @@ export const AuthWindow = () => {
 
 	const isLogInMode = mode === LOG_IN_MODE;
 
+	const authUrl = isLogInMode 
+	? 'http://127.0.0.1:8000/api/auth/jwt/create/' 
+	: 'http://127.0.0.1:8000/api/auth/users/';
 
 	const handleSwitchMode = () => {
 		setMode(prevMode => (prevMode === LOG_IN_MODE ? REGISTER_MODE : LOG_IN_MODE));
@@ -64,7 +66,7 @@ export const AuthWindow = () => {
 
 	const { control, handleSubmit, formState: {errors}, formState, getValues, clearErrors, reset } = useForm({});
 
-	const isAuthenticated = useSelector(selectIdToken);
+	const isAuthenticated = useSelector(selectAccessToken);
 	const dispatch = useDispatch();
 
 	const {mutate} = useMutation({
@@ -72,21 +74,30 @@ export const AuthWindow = () => {
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		onSuccess: response => {
+		onSuccess: isLogInMode 
+		? response => {
+			const { refresh, access } = response;
+
+			if (!refresh && !access) return alert('Помилка. Токени не були передані');
+			alert('Запит успішний')
+			dispatch(authenticateUser(refresh, access))
+		} : response => {
 			
 			const { name } = response;
 			// Handle errors
-			if (!name) return alert('Перейдіть на пошту, щоб підтвердити обліковий запит');
-			// dispatch(authenticateUser(token, uid))
-			console.log(`Your name is ${name}`);
+			if (!name) return alert('Помилка. Можливо користувач вже існує');
+			alert(`Вітаю ${name}. Перейдіть на пошту, щоб підтвердити обліковий запит`)
+			dispatch(addUser(response))
 		},
-		onError: () => alert('Запит не був відправлений')
+		onError:() => alert('Запит не був відправлений')
 });
 
 	useEffect(() => {
 		reset();
 		clearErrors();
 	}, [mode, reset, clearErrors]);
+
+	if (isAuthenticated) return <Navigate to="/"/>;
 
 	const onSubmit = values => {
 		mutate(JSON.stringify(values));
