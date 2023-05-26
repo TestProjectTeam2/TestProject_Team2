@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Accordion, Container, Navbar, Nav } from 'react-bootstrap';
+import { Accordion, Navbar, Nav } from 'react-bootstrap';
 
 import { logoutUser } from '../../store/actions/auth';
+import { useMutation } from '../../hooks/useMutation';
 
 import './Cabinet.scss';
 
 const selectAccessToken = state => !!state.auth.accessToken;
+
+const accessToken = state => state.auth.accessToken;
 
 const userInfo = state => state.auth.user;
 
@@ -16,6 +19,23 @@ export const Cabinet = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	console.log(userInfo);
+
+	const {mutate} = useMutation({
+		url: '/refresh-token',
+		headers: {
+			'Authorization': `Bearer ${newAccessToken}`,
+			'Content-Type': 'application/json'
+		},
+		onSuccess: response => {
+			const { newAccessToken } = response
+			if (response) return alert('Запит успішний');
+		},
+		// onError: () => alert('Запит не був відправлений')
+	});
+
+	const verifyAccess = () => {
+		mutate(JSON.stringify({ accessToken }));
+	}
 
 	const handleLogout = () => {
 		dispatch(logoutUser());

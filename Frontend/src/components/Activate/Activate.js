@@ -24,7 +24,7 @@ export const Activate = (match) => {
 		onSuccess: response => {
 			if (response) return alert('Запит успішний');
 		},
-		onError: () => alert('Запит не був відправлений')
+		// onError: () => alert('Запит не був відправлений')
 	});
 
 
