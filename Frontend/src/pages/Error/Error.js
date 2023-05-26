@@ -1,8 +1,13 @@
 import React from "react";
+import { Helmet } from 'react-helmet';
+import './Error.scss';
 
 export default function Error() {
     return(
         <>
+            <Helmet>
+                <title>ERROR</title>
+            </Helmet>
             <h1>Page not found</h1>
         </>
     );

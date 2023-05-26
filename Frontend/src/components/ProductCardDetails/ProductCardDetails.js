@@ -49,6 +49,7 @@ export function ProductCardDetails({price, count, discount, slug}) {
 		alert("Додано в кошик");
 	};
 
+	let credit = newPrice / 12;
 	
 
 	return (
@@ -92,12 +93,12 @@ export function ProductCardDetails({price, count, discount, slug}) {
 					<div className='info-body__payment-choice choice-payment'>
 						<div className='choice-payment__item'>
 							<div className='choice-payment__title'>В кредит</div>
-							<div className='choice-payment__condition'>3 000 грн на 12 місяців</div>
+							<div className='choice-payment__condition'>{credit} грн на 12 місяців</div>
 						</div>
-						<div className='choice-payment__item'>
+						{/* <div className='choice-payment__item'>
 							<div className='choice-payment__title'>Оплата частинами</div>
 							<div className='choice-payment__condition'>4 600 грн в місяць</div>
-						</div>
+						</div> */}
 					</div>
 					{count !== 0 ? (
 						<button className='info-body__button' onClick={() => handleAddToCart(slug)}><span></span>В корзину</button>

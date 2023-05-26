@@ -20,6 +20,9 @@
             #order {
                 background-color: $accent;
                 border: none;
+                p {
+                    color: $bg;
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ import OrderPage from '../pages/OrderPage/OrderPage';
 import CartPage from '../pages/CartPage/CartPage';
 import { Activate } from '../components/Activate/Activate';
 import { Cabinet } from '../pages/Cabinet/Cabinet';
-
+import ProductList from '../pages/ProductsList/ProductsList';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
               {/* <Route path='/personal-info' element={<PersonalInfo />} />
               <Route path='/favorite' element={<Favorite />} /> */}
           </Route>
-          {/* <Route path='/product-list' element={<ProductList />} /> */}
+          <Route path='/product-list/:slug' element={<ProductList />} />
 			    <Route path='/login/activate/:uid/:token' element={<Activate/>} />
         </Route>
         <Route path='/order' element={<OrderPage />} />

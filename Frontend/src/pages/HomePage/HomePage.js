@@ -5,6 +5,7 @@ import './HomePage.scss';
 import ProductCard from '../../components/productCard/ProductCard';
 import YouTube from 'react-youtube';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 export default function HomePage() {
     const [products, setProducts] = useState(null)
@@ -27,6 +28,9 @@ export default function HomePage() {
       
       return(
         <>
+            <Helmet>
+                <title>TechZone - home page</title>
+            </Helmet>
             <Carousel>
                 <Carousel.Item>
                     <img

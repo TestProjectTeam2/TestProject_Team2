@@ -1,17 +1,26 @@
 import React from "react";
-import { Container, Row, Col, Tab, Nav, Form, FormGroup, FormLabel, FormCheck } from "react-bootstrap";
+import { Container, Row, Col, Tab, Nav, Form, FormGroup, FormCheck } from "react-bootstrap";
 import CartItem from "../CartPage/CartItem";
 import {AuthWindow} from '../../components/AuthWindow/AuthWindow';
 import './OrderPage.scss';
 import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 export default function OrderPage() {
+    const items = useSelector((state) => state.cart.items);
+    const count = items.length;
 
     return(
         <div className="order-page">
+            <Helmet>
+                <title>TechZone - order page</title>
+            </Helmet>
             <header>
-                <img alt="logo" src="/images/icons/TechZoneDark.svg"/>
-                <hr />
+                <NavLink to="/">
+                    <img alt="logo" src="/images/icons/TechZoneDark.svg"/>
+                    <hr /> 
+                </NavLink>
             </header>
             <Container>
                 <Row>
@@ -21,7 +30,9 @@ export default function OrderPage() {
                         <NavLink to="/cart">
                             <button className="edit"><img src="/images/icons/edit.svg" alt="edit changes" />Редагувати</button>
                         </NavLink>
-                        <CartItem mutability={false}/>
+                        {items && items.map((item) => (
+                            <CartItem mutability={false} slug={item.slug}/>
+                        ))}
                         <div className="contact-info">
                             <h5>1. Ваші контактні дані</h5>
                             <div className="warning">
@@ -168,8 +179,8 @@ export default function OrderPage() {
                         <div className="total">
                             <h2>Разом</h2>
                             <div className="sum-count">
-                                <p>1 товар на суму</p>
-                                <p>35999 </p>
+                                <p>{count} товар на суму</p>
+                                <p>Безкоштовно</p>
                             </div>
                             <div className="delivery-price">
                                 <p>Доставка</p>
@@ -178,9 +189,9 @@ export default function OrderPage() {
                             <hr />
                             <div className="total-price">
                                 <p>До сплати</p>
-                                <p>35999</p>
+                                <p>Безкоштовно</p>
                             </div>
-                            <button id="confirm">Підтвердити</button>
+                            <button id="confirm" onClick={() => alert("Замовлення оформлене")}>Підтвердити</button>
                             <p id="condition">Підтверджуючи замовлення, я приймаю умови:
                                 <li>положення про обробку і захист персональних даних</li>
                                 <li>угоди користувача</li>
