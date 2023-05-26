@@ -61,17 +61,17 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
 
-CORS_ORIGIN_WHITELIST = [
-    'http://192.168.1.6:3000',
-    'http://localhost:3000',
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://192.168.1.6:3000',
+#     'http://localhost:3000',
+# ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:8000',
-    'http://192.168.1.6:3000',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://127.0.0.1:8000',
+#     'http://192.168.1.6:3000',
+# ]
 
-DOMAIN = '192.168.1.6:3000'
+# DOMAIN = '192.168.1.6:3000'
 
 ROOT_URLCONF = 'test_project.urls'
 

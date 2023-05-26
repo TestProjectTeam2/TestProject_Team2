@@ -6,6 +6,8 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import './ProductCardDetails.scss';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/cartSlice";
 
 const cardSlides = [
 	{
@@ -30,7 +32,25 @@ const cardSlides = [
 	},
 ]
 
-export const ProductCardDetails = () => {
+export function ProductCardDetails({price, count, discount, slug}) {
+
+	function calculatePrice(discount, price) {
+		const discountAmount = Number((discount / 100) * price);
+		const newPrice = price - discountAmount;
+		const roundedPrice = Math.round(newPrice * 100) / 100;
+		return roundedPrice;
+	}
+	const newPrice = calculatePrice(discount, price);
+	
+	const dispatch = useDispatch();
+
+	const handleAddToCart = (slug) => {
+		dispatch(addToCart({ slug }));
+		alert("Додано в кошик");
+	};
+
+	
+
 	return (
 		<section className='content-body'>
 			<div className='content-body__slider'>
@@ -61,9 +81,13 @@ export const ProductCardDetails = () => {
 			<div className='content-body__info'>
 				<div className='info-top'>
 					<div className='info-top__guarantee'><span></span>Гарантія 12 місяців</div>
+					{count !== 0 ? (
 					<div className='info-top__availability'><span></span>Товар в наявності</div>
+					) : (
+					<div>Немає в наявності</div>
+					)}
 				</div>
-				<div className='info-price'>27 999</div>
+				<div className='info-price'>{newPrice} грн </div>
 				<div className='info-body'>
 					<div className='info-body__payment-choice choice-payment'>
 						<div className='choice-payment__item'>
@@ -75,7 +99,11 @@ export const ProductCardDetails = () => {
 							<div className='choice-payment__condition'>4 600 грн в місяць</div>
 						</div>
 					</div>
-					<button type='button' className='info-body__button'><span></span>В корзину</button>
+					{count !== 0 ? (
+						<button className='info-body__button' onClick={() => handleAddToCart(slug)}><span></span>В корзину</button>
+					) : (
+					<div>Немає в наявності</div>
+					)}
 					<div className='info-body__delivery-container container-delivery'>
 						<div className='container-delivery__title'>
 							<div>Доставка в<button>Київ</button></div>

@@ -1,19 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './HomePage.scss';
 import ProductCard from '../../components/productCard/ProductCard';
 import YouTube from 'react-youtube';
+import axios from 'axios';
 
 export default function HomePage() {
-    
+    const [products, setProducts] = useState(null)
     const opts = {
         width: '320',
         height: '200'
     }
 
-    
-    return(
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get('http://127.0.0.1:8000/api/product/');
+            setProducts(response.data);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+        fetchData();
+      }, []);
+      
+      return(
         <>
             <Carousel>
                 <Carousel.Item>
@@ -49,11 +61,9 @@ export default function HomePage() {
                 <section className='container__item'>
                     <h2>Акційні пропозиції</h2>
                     <div className='card-container'>
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
+                        {products && products.slice(0, 5).map((product) => (
+                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                        ))}
                     </div>
                     <div className="more-link">
                         <a href='#'>Показати ще</a>
@@ -63,11 +73,9 @@ export default function HomePage() {
                 <section className='container__item'>
                     <h2>Гарячі новинки</h2>
                     <div className='card-container'>
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
+                        {products && products.slice(0, 5).map((product) => (
+                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            ))}
                     </div>
                     <div className="more-link">
                         <a href='#'>Показати ще</a>
@@ -77,12 +85,9 @@ export default function HomePage() {
                 <section className='container__item'>
                     <h2>Найбільш обговорювані товари</h2>
                     <div className='card-container'>
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-
+                        {products && products.slice(0, 5).map((product) => (
+                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            ))}
                     </div>
                     <div className="more-link">
                         <a href='#'>Показати ще</a>
@@ -123,11 +128,9 @@ export default function HomePage() {
                 <section className='container__item'>
                     <h2>Найбільш очікувані товари</h2>
                     <div className='card-container'>
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
+                        {products && products.slice(0, 5).map((product) => (
+                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            ))}
                     </div>
                     <div className="more-link">
                         <a href='#'>Показати ще</a>
@@ -137,11 +140,9 @@ export default function HomePage() {
                 <section className='container__item'>
                     <h2>Рекомендації на основі ваших переглядів</h2>
                     <div className='card-container'>
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
+                        {products && products.slice(0, 5).map((product) => (
+                            <ProductCard name={product.name} oldPrice={product.price} discount={product.discount} slug={product.slug}/>
+                            ))}
                     </div>
                     <div className="more-link">
                         <a href='#'>Показати ще</a>
