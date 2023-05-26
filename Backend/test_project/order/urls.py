@@ -13,9 +13,5 @@ router.register('product', OrderProductAPIViewSet)
 router.register('', OrderAPIViewSet)
 
 
-urlpatterns = [
-    path("", include(router.urls)),
-]
-
 urlpatterns += router.urls
 
